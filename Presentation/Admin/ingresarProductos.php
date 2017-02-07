@@ -28,38 +28,42 @@
                     </div>
 
                     <div class="row">
-                        <form>
+                        <form action="../../Business/Producto/ProductoInsertarAccion.php" method="POST" enctype="multipart/form-data" >
                             <div class="box col-md-12">
                                 <div class="box-inner">
                                     <div class="box-header well" data-original-title="">
                                         <h2><i class="glyphicon glyphicon-th"></i>Imagen de Productos</h2>
-
                                         <div class="box-icon">
                                             <a href="#" class="btn btn-minimize btn-round btn-default"><i
                                                     class="glyphicon glyphicon-chevron-up"></i></a>
-
                                         </div>
                                     </div>
                                     <div class="box-content">
                                         <div class="row">
                                             <div class="col-md-6">
+                                                <span class="badge">Español</span>
+                                                <input type="text" class="form-control" name="nombreEs" placeholder="Digite el nombre del producto en español." > <br/>
+                                                <textarea class="form-control" id="exampleInputPassword1" name="descripcionEs"  placeholder="Digite la descripción del producto en español."></textarea><br/>
+
+                                                <span class="badge">Inglés</span>
+                                                <input type="text" class="form-control" name="nombreIn" placeholder="Digite el nombre del producto en inglés." > <br/>
+                                                <textarea class="form-control" id="exampleInputPassword1" name="descripcionIn" placeholder="Digite la descripción del producto en inglés."></textarea>
+
+                                            </div> 
+                                            <div class="col-md-6">
+                                                <input type="number" name="precio" class="form-control" placeholder="Digite el precio del producto." > <br/>   
+                                            </div>  
+                                            <div class="col-md-6">
                                                 <!--<img src="img/gal7.png" class="img-responsive"> <br/><br/>-->
-                                                <input type="file" id="files" name="files[]" />
+                                                <input type="file" id="files" name="archivo" />
                                                 <br />
                                                 <output id="list" ></output>
                                                 <br />
-                                                <button type="submit" class="btn btn-primary">Actualizar</button>
-                                                <button type="submit" class="btn btn-primary">Eliminar</button>
+                                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                                                <!--<button type="submit" class="btn btn-primary">Eliminar</button>-->
                                             </div>      
-                                            <div class="col-md-6">
 
-                                                <span class="badge">Español</span>
-                                                <input type="text" class="form-control" placeholder="Titulo de la imagen" > <br/>
-                                                <textarea class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"></textarea><br/>
-                                                <span class="badge">Inglés</span>
-                                                <input type="text" class="form-control" placeholder="Titulo de la imagen" > <br/>
-                                                <textarea class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"></textarea>
-                                            </div>  
+
                                         </div>
 
                                     </div>
@@ -80,6 +84,26 @@
         <hr>
 
         <script>
+
+            (function ($) {
+                $.get = function (key) {
+                    key = key.replace(/[\[]/, '\\[');
+                    key = key.replace(/[\]]/, '\\]');
+                    var pattern = "[\\?&]" + key + "=([^&#]*)";
+                    var regex = new RegExp(pattern);
+                    var url = unescape(window.location.href);
+                    var results = regex.exec(url);
+                    if (results === null) {
+                        return null;
+                    } else {
+                        return results[1];
+                    }
+                }
+            })(jQuery);
+
+            var getee = $.get("msg");
+            alert(getee);
+
             function archivo(evt) {
                 var files = evt.target.files; // FileList object
 
