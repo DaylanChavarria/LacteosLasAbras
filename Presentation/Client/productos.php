@@ -29,29 +29,29 @@
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="./presentacion/products/css/animate.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="./presentacion/products/css/icomoon.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/icomoon.css">
 	<!-- Themify Icons-->
-	<link rel="stylesheet" href="./presentacion/products/css/themify-icons.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/themify-icons.css">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="./presentacion/products/css/bootstrap.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/bootstrap.css">
 
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="./presentacion/products/css/magnific-popup.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/magnific-popup.css">
 
 	<!-- Bootstrap DateTimePicker -->
-	<link rel="stylesheet" href="./presentacion/products/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/bootstrap-datetimepicker.min.css">
 
 	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="./presentacion/products/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="./presentacion/products/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/owl.theme.default.min.css">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="./presentacion/products/css/style.css">
+	<link rel="stylesheet" href="../../ClientResource/products/css/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="./presentacion/products/js/modernizr-2.6.2.min.js"></script>
+	<script src="../../ClientResource/products/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -72,7 +72,7 @@
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
 					<div id="gtco-logo"><a href="index.php"><figure>
-						<img src="./presentacion/images/back_icon.png" alt="">
+						<img src="../../ClientResource/images/back_icon.png" alt="">
 						
 					</figure></a></div>
 				</div>
@@ -211,31 +211,31 @@
 	</div>
 	
 	<!-- jQuery -->
-	<script src="./presentacion/products/js/jquery.min.js"></script>
+	<script src="../../ClientResource/products/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="./presentacion/products/js/jquery.easing.1.3.js"></script>
+	<script src="../../ClientResource/products/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="./presentacion/products/js/bootstrap.min.js"></script>
+	<script src="../../ClientResource/products/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="./presentacion/products/js/jquery.waypoints.min.js"></script>
+	<script src="../../ClientResource/products/js/jquery.waypoints.min.js"></script>
 	<!-- Carousel -->
-	<script src="./presentacion/products/js/owl.carousel.min.js"></script>
+	<script src="../../ClientResource/products/js/owl.carousel.min.js"></script>
 	<!-- countTo -->
-	<script src="./presentacion/products/js/jquery.countTo.js"></script>
+	<script src="../../ClientResource/products/js/jquery.countTo.js"></script>
 
 	<!-- Stellar Parallax -->
-	<script src="./presentacion/products/js/jquery.stellar.min.js"></script>
+	<script src="../../ClientResource/products/js/jquery.stellar.min.js"></script>
 
 	<!-- Magnific Popup -->
-	<script src="./presentacion/products/js/jquery.magnific-popup.min.js"></script>
-	<script src="./presentacion/products/js/magnific-popup-options.js"></script>
+	<script src="../../ClientResource/products/js/jquery.magnific-popup.min.js"></script>
+	<script src="../../ClientResource/products/js/magnific-popup-options.js"></script>
 	
 	<script src="products/js/moment.min.js"></script>
 	<script src="products/js/bootstrap-datetimepicker.min.js"></script>
 
 
 	<!-- Main -->
-	<script src="./presentacion/products/js/main.js"></script>
+	<script src="../../ClientResource/products/js/main.js"></script>
 
 	</body>
 </html>
