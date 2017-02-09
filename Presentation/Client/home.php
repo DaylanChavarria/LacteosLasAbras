@@ -48,24 +48,99 @@
         <script src="../../ClientResource/js/modernizr-2.6.2.min.js"></script>
 
         <script src="../../ClientResource/js/jquery.min.js"></script>
-
+         
+         <?php
+            include '../../Business/Titulos/TitulosBusiness.php';
+        ?>
     </head>
     <body>
+        
+        
+        <?php
+        /* se hace el llamado a los titulos los cuales ya estan
+         * establecidos, su estructura no va a cambiar por lo tanto
+         * se conoce su posicion exacta en el array 
+         * el idioma español apunta al atIdioma 0 y el ingles a 1
+         * 
+         */
+        $tituloBusiness = new TitulosBusiness();
+        $titulos = $tituloBusiness->obtenerTitulosEsBusiness();
 
-        <div id="example" class="modal hide fade in" style="display: none; ">
-            <div class="modal-header">
-                <a class="close" data-dismiss="modal">×</a>
-                <h3>Cabecera de la ventana</h3>
-            </div>
-            <div class="modal-body">
-                <h4>Texto de la ventana</h4>
-                <p>Mas texto en la ventana.</p>               
-            </div>
-            <div class="modal-footer">
-                <a href="index.html" class="btn btn-success">Guardar</a>
-                <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
-            </div>
-        </div>
+        if (isset($_GET['lang'])) {
+            if ($_GET['lang'] == "es") {
+               /* Para los botones de navegacion */
+                $btnInicio = $titulos[0]->getNombre();
+                $btnAcerca = $titulos[1]->getNombre();
+                $btnGaleria = $titulos[2]->getNombre();
+                $btnProductos = $titulos[3]->getNombre();
+                $btnContactenos = $titulos[4]->getNombre();
+                $btnLocalizacion = $titulos[5]->getNombre();
+                $btnIdiomas = $titulos[6]->getNombre();
+                $btnIdiomaEs = $titulos[7]->getNombre();
+                $btnIdiomaIn = $titulos[8]->getNombre();
+                $btnEnviarMensaje = $titulos[9]->getNombre();
+                $btnVerProductos = $titulos[18]->getNombre();
+
+               /* para los titulos */
+                $historia = $titulos[10]->getNombre();
+                $quienesSomos = $titulos[11]->getNombre();
+                $galeria = $titulos[12]->getNombre();
+                $productos = $titulos[13]->getNombre();
+                $quesos = $titulos[14]->getNombre();
+                $denominacion = $titulos[15]->getNombre();
+                $contactenos = $titulos[16]->getNombre();
+                $consulta = $titulos[17]->getNombre();
+      
+            } else if ($_GET['lang'] == "en") {
+                /* Para los botones de navegacion */
+                $btnInicio = "Ingles sisisis";
+                $btnAcerca = $titulos[1]->getNombre();
+                $btnGaleria = $titulos[2]->getNombre();
+                $btnProductos = $titulos[3]->getNombre();
+                $btnContactenos = $titulos[4]->getNombre();
+                $btnLocalizacion = $titulos[5]->getNombre();
+                $btnIdiomas = $titulos[6]->getNombre();
+                $btnIdiomaEs = $titulos[7]->getNombre();
+                $btnIdiomaIn = $titulos[8]->getNombre();
+                $btnEnviarMensaje = $titulos[9]->getNombre();
+                $btnVerProductos = $titulos[18]->getNombre();
+
+               /* para los titulos */
+                $historia = $titulos[10]->getNombre();
+                $quienesSomos = $titulos[11]->getNombre();
+                $galeria = $titulos[12]->getNombre();
+                $productos = $titulos[13]->getNombre();
+                $quesos = $titulos[14]->getNombre();
+                $denominacion = $titulos[15]->getNombre();
+                $contactenos = $titulos[16]->getNombre();
+                $consulta = $titulos[17]->getNombre();
+            }
+        } else {
+             /* Para los botones de navegacion */
+                $btnInicio = $titulos[0]->getNombre();
+                $btnAcerca = $titulos[1]->getNombre();
+                $btnGaleria = $titulos[2]->getNombre();
+                $btnProductos = $titulos[3]->getNombre();
+                $btnContactenos = $titulos[4]->getNombre();
+                $btnLocalizacion = $titulos[5]->getNombre();
+                $btnIdiomas = $titulos[6]->getNombre();
+                $btnIdiomaEs = $titulos[7]->getNombre();
+                $btnIdiomaIn = $titulos[8]->getNombre();
+                $btnEnviarMensaje = $titulos[9]->getNombre();
+                $btnVerProductos = $titulos[18]->getNombre();
+
+                /* para los titulos */
+                $historia = $titulos[10]->getNombre();
+                $quienesSomos = $titulos[11]->getNombre();
+                $galeria = $titulos[12]->getNombre();
+                $productos = $titulos[13]->getNombre();
+                $quesos = $titulos[14]->getNombre();
+                $denominacion = $titulos[15]->getNombre();
+                $contactenos = $titulos[16]->getNombre();
+                $consulta = $titulos[17]->getNombre();
+        }
+        ?>
+
 
         <div id="fh5co-container">
             <div id="fh5co-home" class="js-fullheight" data-section="home">
@@ -96,10 +171,10 @@
                 <div class="fh5co-main-nav">
                     <div class="container-fluid">
                         <div class="fh5co-menu-1">
-                            <a href="#" data-nav-section="home">Inicio</a>
-                            <a href="#" data-nav-section="about">Acerca de</a>
-                            <a href="#" data-nav-section="menu">Galería</a>
-                            <a href="#" data-nav-section="events">Productos</a>
+                            <a href="#" data-nav-section="home"><?php echo $btnInicio;?> </a>
+                            <a href="#" data-nav-section="about"><?php echo $btnAcerca;?></a>
+                            <a href="#" data-nav-section="menu"><?php echo $btnGaleria;?></a>
+                            <a href="#" data-nav-section="events"><?php echo $btnProductos;?></a>
                         </div>
                         <div class="fh5co-logo">
                             <a data-toggle="modal" href="#myModal">     
@@ -107,17 +182,20 @@
                             </a>        
                         </div>
                         <div class="fh5co-menu-2 dropdown">
-                            <a href="#" data-nav-section="reservation">Contáctenos</a>
-                            <a href="#" data-nav-section="localizacion">Localización</a>
+                            <a href="#" data-nav-section="reservation"><?php echo $btnContactenos;?></a>
+                            <a href="#" data-nav-section="localizacion"><?php echo $btnLocalizacion;?></a>
                             
 
                             <!--**************************--> 
 
-                            <a class="dropdown-toggle" type="button" data-toggle="dropdown">Idiomas</a>
+                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $btnIdiomas;?></a>
 
                             <ul class="dropdown-menu">
-                                <li><a href="#"><img src="../../ClientResource/images/ingles.png"/> Inglés</a></li>
-                                <li><a href="#"><img src="../../ClientResource/images/español.png"/> Español</a></li>
+                                <form>
+                                    <li><a href="../../Business/Titulos/IdiomaAccion.php"><img src="../../ClientResource/images/ingles.png"/><?php echo $btnIdiomaIn;?></a></li>
+                                    <li><img src="../../ClientResource/images/ingles.png"/><input type="submit" value="en" name="lang" id="langEn"/></li>
+                                    <li><img src="../../ClientResource/images/español.png"/><input type="submit" value="es" name="lang" id="langEs"/></li>
+                                </form>
                             </ul>
 
                             <!--*******************************-->
@@ -132,7 +210,7 @@
 
             <div id="fh5co-about" data-section="about">
                 <div class="fh5co-2col fh5co-text">
-                    <h2 class="heading to-animate">Historia</h2>
+                    <h2 class="heading to-animate"><?php echo $historia;?></h2>
                     <p class="to-animate"><span class="firstcharacter">H</span>ace 20 años inició un sueño con una pequeña finca y unas pocas vacas. Empezó una travesía y curiosidad sobre el proceso de la leche. La ilusión de superarse y la perseverancia lograron una realidad: dar el primer paso en el arte de hacer queso.
                     </p>
                     <p class="to-animate">
@@ -145,7 +223,7 @@
 
                 </div>
                 <div class="fh5co-2col fh5co-text">
-                    <h2 class="heading to-animate">¿Quiénes somos?</h2>
+                    <h2 class="heading to-animate"><?php echo $quienesSomos;?></h2>
                     <p class="to-animate">Nuestra planta procesadora se encuentra en Santa Cruz de Turrialba, en Cartago. Lugar que hoy goza del proceso para la certificación de Denominación de Origen por el QUESO TURRIALBA. 
                     </p>
                     <p class="to-animate">
@@ -161,7 +239,7 @@
                 <div class="container">
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-8 col-md-offset-2">
-                            <h2 class="heading to-animate">Galería</h2>
+                            <h2 class="heading to-animate"><?php echo $galeria;?></h2>
                             <p class="sub-heading to-animate">Conozca un poco más sobre nuestra empresa, nuestra fábrica, la tienda, nuestro ganado y mucho más..</p>
                         </div>
                     </div>
@@ -291,22 +369,22 @@
                 <div class="container">
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-12  to-animate">
-                            <h2 class="heading">Nuestros Productos</h2>
+                            <h2 class="heading"><?php echo $productos;?></h2>
                             <p class="sub-heading">Un proceso de elaboración artesanal es el que hoy impera en el sabor y la calidad de cada uno de nuestros productos. Esta calidad diferenciada, es la seña de identidad que hoy en día los medios artificiales no han logrado conseguir, pues solamente por medios artesanales se obtiene el sabor legítimo del queso, que en este caso han llevado a iniciar el proceso de Denominación de Origen.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="fh5co-event to-animate-2">
-                                <h3>Quesos y otros Productos</h3>
+                                <h3><?php echo $quesos;?></h3>
                                 <span class="fh5co-event-meta"></span>
                                 <p>En nuestros productos se podrá apreciar la textura cremosa, con olor y sabor de la leche de vaca, que solo los procesos artesanales saben dar. Ofrecemos queso, yogurt, natilla y muchos más</p>
-                                <p><a href="productos.php" class="btn btn-primary btn-outline">Ver Productos</a></p>
+                                <p><a href="productos.php" class="btn btn-primary btn-outline"><?php echo $btnVerProductos;?></a></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="fh5co-event to-animate-2">
-                                <h3>Denominacion de orígen</h3>
+                                <h3><?php echo $denominacion;?></h3>
                                 <span class="fh5co-event-meta"></span>
                                 <p>Productos Lácteos Las Abras se enorgullece en ser una empresa pionera en la certificación para la Denominación de Origen por el QUESO TURRIALBA, gracias a los esfuerzos realizados cada día en cumplir con los estándares de calidad e inocuidad en cada uno de nuestros productos.</p>
 
@@ -320,13 +398,13 @@
                 <div class="container">
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-8 col-md-offset-2">
-                            <h2 class="heading to-animate">Contáctenos</h2>
+                            <h2 class="heading to-animate"><?php echo $contactenos;?></h2>
                             <p class="sub-heading to-animate">Para nosotros es muy importante su opinión, sus quejas o sugerencias. Le responderemos lo más pronto posible</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 to-animate-2">
-                            <h3>Contáctenos</h3>
+                            <h3><?php echo $contactenos;?></h3>
                             <ul class="fh5co-contact-info">
                                 <li class="fh5co-contact-address ">
                                     <i class="icon-home"></i>
@@ -339,34 +417,39 @@
                             </ul>
                         </div>
                         <div class="col-md-6 to-animate-2">
-                            <h3>Para cualquier consulta</h3>
-                            <div class="form-group ">
-                                <label for="name" class="sr-only">Nombre</label>
-                                <input id="name" class="form-control" placeholder="Nombre" type="text">
-                            </div>
-                            <div class="form-group ">
-                                <label for="email" class="sr-only">Email</label>
-                                <input id="email" class="form-control" placeholder="Email" type="email">
-                            </div>
+                            <h3><?php echo $consulta; ?></h3>
+                            <form action="home.php">
+                                <div class="form-group ">
+                                    <label for="name" class="sr-only">Nombre</label>
+                                    <input id="name" class="form-control" placeholder="Nombre" type="text">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="email" class="sr-only">Email</label>
+                                    <input id="email" class="form-control" placeholder="Email" type="email">
+                                </div>
 
-                            <div class="form-group ">
-                                <label for="message" class="sr-only">Message</label>
-                                <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="Mensaje"></textarea>
-                            </div>
-                            <div class="form-group ">
-                                <input class="btn btn-primary" value="Enviar mensaje" type="submit">
-                            </div>
+                                <div class="form-group ">
+                                    <label for="message" class="sr-only">Message</label>
+                                    <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="Mensaje"></textarea>
+                                </div>
+                                <div class="form-group ">
+                                    <input class="btn btn-primary" value="<?php echo $btnEnviarMensaje; ?>" type="submit">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
+ 
 
         </div>
 
-        <div  data-section="localizacion">
-
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1389.3628505235206!2d-83.71807445348067!3d9.957938028180395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5f898bc2fb1af7c0!2sTienda+de+quesos+Layo!5e0!3m2!1ses!2ses!4v1485242938228" width="100%" height="450" frameborder="0" style="border:0s;"></iframe>
+        
+        <div  id="mapa" data-section="localizacion">
+            
+            <h3 class="to-animate-2" >Visita nuestra tienda</h3>
+            <iframe id="mapa2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1389.3628505235206!2d-83.71807445348067!3d9.957938028180395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5f898bc2fb1af7c0!2sTienda+de+quesos+Layo!5e0!3m2!1ses!2ses!4v1485242938228" 
+                    width="100%" height="250" frameborder="0" style="border:0s;"></iframe>
 
         </div>
 

@@ -1761,3 +1761,17 @@ margin-top:20px;
    52%{transform:scale(.9)}
    54%{transform:scale(1)}
 }
+
+
+#mapa{
+    border-radius: 50%;
+    margin-bottom: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#mapa2{
+    border-radius: 2%;
+    border-color: #fece17;
+    border: 10px
+}

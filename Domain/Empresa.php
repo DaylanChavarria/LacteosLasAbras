@@ -6,7 +6,7 @@
  * @author Gustavo
  */
 class Empresa {
-    public  $Id;
+    public $Id;
     public $historia;
     public $quinesSomos;
     public $descripcionGaleria;
