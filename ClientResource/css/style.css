@@ -300,7 +300,8 @@ p {
   line-height: 0;
 }
 .fh5co-main-nav .fh5co-menu-1 a,
-.fh5co-main-nav .fh5co-menu-2 a{
+.fh5co-main-nav .fh5co-menu-2 a, 
+.fh5co-main-nav .fh5co-menu-2 input{
 
   padding: 35px 10px;
   color: #130d08;
@@ -335,7 +336,9 @@ p {
 .fh5co-main-nav .fh5co-menu-1 a:hover, .fh5co-main-nav .fh5co-menu-1 a:focus, .fh5co-main-nav .fh5co-menu-1 a:active,
 .fh5co-main-nav .fh5co-menu-2 a:hover,
 .fh5co-main-nav .fh5co-menu-2 a:focus,
+.fh5co-main-nav .fh5co-menu-2 a:focus,
 .fh5co-main-nav .fh5co-menu-2 a:active,
+.fh5co-main-nav .fh5co-menu-2 input:active,
 .fh5co-main-nav .fh5co-logo a:hover,
 .fh5co-main-nav .fh5co-logo a:focus,
 .fh5co-main-nav .fh5co-logo a:active {
@@ -1774,4 +1777,33 @@ margin-top:20px;
     border-radius: 2%;
     border-color: #fece17;
     border: 10px
+}
+
+#langEs{
+    width: 25%;
+    height: 45px;
+    background: no-repeat;
+    background-image: url(../images/español.png);
+    border: none;
+    margin-left: 20px;
+}
+
+#langEn{
+    width: 25%;
+    height: 45px;
+    background: no-repeat;
+    background-image: url(../images/ingles.png);
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border: none;
+}
+
+#langEn:hover{
+    background-color: transparent;
+    //width: 85%;
+}
+
+#langEs:hover{
+    background-color:transparent;
+    //width: 85%;
 }

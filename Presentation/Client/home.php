@@ -66,8 +66,8 @@
         $tituloBusiness = new TitulosBusiness();
         
 
-        if (isset($_GET['lang'])) {
-            if ($_GET['lang'] == "es") {
+        if (isset($_POST['lang'])) {
+            if ($_POST['lang'] == "Español") {
                 
                 $titulos = $tituloBusiness->obtenerTitulosEsBusiness();
                /* Para los botones de navegacion */
@@ -93,7 +93,7 @@
                 $contactenos = $titulos[16]->getNombre();
                 $consulta = $titulos[17]->getNombre();
       
-            } else if ($_GET['lang'] == "en") {
+            } else if ($_POST['lang'] == "Ingles") {
                 $titulos = $tituloBusiness->obtenerTitulosInBusiness();
                 /* Para los botones de navegacion */
                 $btnInicio = $titulos[0]->getNombre();
@@ -179,7 +179,7 @@
                             <a href="#" data-nav-section="home"><?php echo $btnInicio;?> </a>
                             <a href="#" data-nav-section="about"><?php echo $btnAcerca;?></a>
                             <a href="#" data-nav-section="menu"><?php echo $btnGaleria;?></a>
-                            <a href="#" data-nav-section="events"><?php echo $btnProductos;?></a>
+                            <a href="#" data-nav-section="events"><?php echo $btnProductos;?></a>  
                         </div>
                         <div class="fh5co-logo">
                             <a data-toggle="modal" href="#myModal">     
@@ -189,21 +189,23 @@
                         <div class="fh5co-menu-2 dropdown">
                             <a href="#" data-nav-section="reservation"><?php echo $btnContactenos;?></a>
                             <a href="#" data-nav-section="localizacion"><?php echo $btnLocalizacion;?></a>
-                            
 
                             <!--**************************--> 
 
-                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $btnIdiomas;?></a>
+<!--                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $btnIdiomas;?></a>
 
                             <ul class="dropdown-menu">
-                                <form>
-                                    <li><a href="../../Business/Titulos/IdiomaAccion.php"><img src="../../ClientResource/images/ingles.png"/><?php echo $btnIdiomaIn;?></a></li>
-                                    <li><img src="../../ClientResource/images/ingles.png"/><input type="submit" value="en" name="lang" id="langEn"/></li>
-                                    <li><img src="../../ClientResource/images/español.png"/><input type="submit" value="es" name="lang" id="langEs"/></li>
+                                <form method="post">
+                                    <li><input type="submit" value="Ingles" name="lang" id="langEn"/></li>
+                                    <li><input type="submit" value="Español" name="lang" id="langEs"/></li>
+                                    
                                 </form>
-                            </ul>
-
+                            </ul>-->
+                            <a data-toggle="modal" href="#myModalLanguaje">     
+                                <?php echo $btnIdiomas;?>
+                            </a>  
                             <!--*******************************-->
+                            
                             <a data-toggle="modal" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión">
                             </a>
 
@@ -502,6 +504,21 @@
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="myModalLanguaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method="post">
+                        <button type="submit" value="Ingles" name="lang" id="langEn"></button>
+                        <button type="submit" value="Español" name="lang" id="langEs"></button>
+                        
+                    </form>
+                </div>
+<!--                <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>-->
             </div>
         </div>
 

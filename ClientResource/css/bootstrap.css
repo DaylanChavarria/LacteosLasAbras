@@ -6394,6 +6394,7 @@ button.close {
 }
 
 .modal {
+    margin-top: 15%;
   display: none;
   overflow: hidden;
   position: fixed;
@@ -6435,12 +6436,12 @@ button.close {
 
 .modal-content {
   position: relative;
-  background-color: #fff;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+  //border: 1px solid transparent;
+  //border: 1px solid rgba(0, 0, 0, 0.2);
+  //border-radius: 6px;
+  //-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  //box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
   outline: 0;
 }
@@ -6515,24 +6516,31 @@ button.close {
   overflow: scroll;
 }
 
+@media (min-width: 420px) {
+  .modal-dialog {
+    width: 180px;
+    margin: 30px auto;
+  }
+
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
+    width: 180px;
     margin: 30px auto;
   }
 
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    //-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    //box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
 
   .modal-sm {
-    width: 300px;
+    width: 250px;
   }
 }
 @media (min-width: 992px) {
   .modal-lg {
-    width: 900px;
+    width: 180px;
+    margin: 30px auto;
   }
 }
 .tooltip {
