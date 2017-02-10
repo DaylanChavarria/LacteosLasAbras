@@ -64,10 +64,12 @@
          * 
          */
         $tituloBusiness = new TitulosBusiness();
-        $titulos = $tituloBusiness->obtenerTitulosEsBusiness();
+        
 
         if (isset($_GET['lang'])) {
             if ($_GET['lang'] == "es") {
+                
+                $titulos = $tituloBusiness->obtenerTitulosEsBusiness();
                /* Para los botones de navegacion */
                 $btnInicio = $titulos[0]->getNombre();
                 $btnAcerca = $titulos[1]->getNombre();
@@ -92,8 +94,9 @@
                 $consulta = $titulos[17]->getNombre();
       
             } else if ($_GET['lang'] == "en") {
+                $titulos = $tituloBusiness->obtenerTitulosInBusiness();
                 /* Para los botones de navegacion */
-                $btnInicio = "Ingles sisisis";
+                $btnInicio = $titulos[0]->getNombre();
                 $btnAcerca = $titulos[1]->getNombre();
                 $btnGaleria = $titulos[2]->getNombre();
                 $btnProductos = $titulos[3]->getNombre();
@@ -117,6 +120,7 @@
             }
         } else {
              /* Para los botones de navegacion */
+                $titulos = $tituloBusiness->obtenerTitulosEsBusiness();
                 $btnInicio = $titulos[0]->getNombre();
                 $btnAcerca = $titulos[1]->getNombre();
                 $btnGaleria = $titulos[2]->getNombre();
@@ -140,6 +144,7 @@
                 $consulta = $titulos[17]->getNombre();
         }
         ?>
+
 
 
         <div id="fh5co-container">
