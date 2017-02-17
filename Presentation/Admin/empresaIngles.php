@@ -32,6 +32,25 @@
                             </li>
                         </ul>
                     </div>
+
+
+
+                    <!-- Mensaje de error o de realizado -->
+                    <?php
+                        $textError = "";
+                        if (isset($_GET['msg'])) {
+                            $textError = $_GET['msg'];
+                    ?>
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="alert alert-success text-center">
+                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                    <h4> <?php echo $textError; ?> </h4>
+                                </div>
+                            </div>
+                    <?php
+                       }
+                    ?>
+                    
                     <form method="POST" action="../../Business/Empresa/ActualizarEmpresaAccion.php?len=en">
                         <div class="row">
 
