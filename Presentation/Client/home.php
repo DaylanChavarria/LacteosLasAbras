@@ -67,6 +67,7 @@
          */
         $tituloBusiness = new TitulosBusiness();
         $instEmpresaBusiness = new EmpresaBusiness();
+        $idiomaTemp = true;
         
 
         if (isset($_POST['lang'])) {
@@ -126,6 +127,7 @@
                 
               /* Descripciones de cada titulo*/
                $tem = $instEmpresaBusiness->getEmpresaInBusiness();
+               $idiomaTemp = false;
             }
         } else {
              /* Para los botones de navegacion */
@@ -220,31 +222,30 @@
             <div id="fh5co-about" data-section="about">
                 <div class="fh5co-2col fh5co-text">
                  <h2 class="heading to-animate"><?php echo $historia;?></h2>
-                   <!--    <p class="to-animate"><span class="firstcharacter">H</span>ace 20 años inició un sueño con una pequeña finca y unas pocas vacas. Empezó una travesía y curiosidad sobre el proceso de la leche. La ilusión de superarse y la perseverancia lograron una realidad: dar el primer paso en el arte de hacer queso.
-                    </p>
-                    <p class="to-animate">
-                        Poco a poco la calidad de los productos nos impulsaron al crecimiento; nos incitaron a ampliar nuestra vista a un horizonte más ambicioso.En el transcurso del 2014 se inició la construcción de la planta procesadora, donde se unificaron los procesos de dos fincas en un solo lugar. 
-                    </p>
-                    <p class="to-animate">
-                        Gente visionaria, luchadora y ansiosa por perfeccionar este arte, esto caracteriza a cada miembro de nuestra gran familia.
-                        Nuestras arraigadas tradiciones combinan la dedicación por el trabajo, así como el ambiente acogedor que posee cada familia. 
-                    </p>-->
-                    <p>
-                        <?php echo $tem->historia ; ?>
-                    </p>
+                    <?php $parrafos = explode("|", $tem->historia); //separa parrafos por medio de |
+                    
+                        for ($i = 0; $i < count($parrafos); $i++) {
+                            if($i == 0){
+                                echo ' <p class="to-animate"><span class="firstcharacter">'.
+                                substr($parrafos[$i], 0,1) .'</span>' .
+                                substr($parrafos[$i], 1). '</p>';
+                            }
+                            else{
+                                echo '<p class="to-animate">' .$parrafos[$i]. '</p>';
+                            }
+                        }
+                    ?>
+
 
                 </div>
                 <div class="fh5co-2col fh5co-text">
                     <h2 class="heading to-animate"><?php echo $quienesSomos;?></h2>
-<!--                    <p class="to-animate">Nuestra planta procesadora se encuentra en Santa Cruz de Turrialba, en Cartago. Lugar que hoy goza del proceso para la certificación de Denominación de Origen por el QUESO TURRIALBA. 
-                    </p>-->
-<!--                    <p class="to-animate">
-                        Nuestra empresa se ha distinguido por ser un proyecto familiar, lo que nació de un sueño ha visto la constante evolución, gracias al esfuerzo y dedicación de cada una de las personas que laboran en nuestro equipo. En consecuencia de ese sacrificio, hoy somos una empresa conformada por personas capacitadas en llevar altos estándares de calidad hasta su hogar.
-                        Somos Productos Lácteos Las Abras.
-                    </p>-->
-                    <p class="to-animate">
-                        <?php echo $tem->quinesSomos ; ?>
-                    </p>
+                    <?php $parrafos = explode("|", $tem->quinesSomos); //separa parrafos por medio de |
+                    
+                        for ($i = 0; $i < count($parrafos); $i++) {    
+                            echo '<p class="to-animate">' .$parrafos[$i]. '</p>';   
+                        }
+                    ?>
 
 
                 </div>
@@ -255,7 +256,7 @@
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-8 col-md-offset-2">
                             <h2 class="heading to-animate"><?php echo $galeria;?></h2>
-                            <p class="sub-heading to-animate">Conozca un poco más sobre nuestra empresa, nuestra fábrica, la tienda, nuestro ganado y mucho más..</p>
+                            <p class="sub-heading to-animate"> <?php echo $tem->descripcionGaleria ?></p>
                         </div>
                     </div>
 
@@ -385,7 +386,7 @@
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-12  to-animate">
                             <h2 class="heading"><?php echo $productos;?></h2>
-                            <p class="sub-heading">Un proceso de elaboración artesanal es el que hoy impera en el sabor y la calidad de cada uno de nuestros productos. Esta calidad diferenciada, es la seña de identidad que hoy en día los medios artificiales no han logrado conseguir, pues solamente por medios artesanales se obtiene el sabor legítimo del queso, que en este caso han llevado a iniciar el proceso de Denominación de Origen.</p>
+                            <p class="sub-heading"><?php echo $tem->elaboracion;?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -393,7 +394,7 @@
                             <div class="fh5co-event to-animate-2">
                                 <h3><?php echo $quesos;?></h3>
                                 <span class="fh5co-event-meta"></span>
-                                <p>En nuestros productos se podrá apreciar la textura cremosa, con olor y sabor de la leche de vaca, que solo los procesos artesanales saben dar. Ofrecemos queso, yogurt, natilla y muchos más</p>
+                                <p><?php echo $tem->descripcionProductoA;?></p>
                                 <p><a href="productos.php" class="btn btn-primary btn-outline"><?php echo $btnVerProductos;?></a></p>
                             </div>
                         </div>
@@ -401,7 +402,7 @@
                             <div class="fh5co-event to-animate-2">
                                 <h3><?php echo $denominacion;?></h3>
                                 <span class="fh5co-event-meta"></span>
-                                <p>Productos Lácteos Las Abras se enorgullece en ser una empresa pionera en la certificación para la Denominación de Origen por el QUESO TURRIALBA, gracias a los esfuerzos realizados cada día en cumplir con los estándares de calidad e inocuidad en cada uno de nuestros productos.</p>
+                                <p><?php echo $tem->denominacion;?>.</p>
 
                             </div>
                         </div>
@@ -414,7 +415,7 @@
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-8 col-md-offset-2">
                             <h2 class="heading to-animate"><?php echo $contactenos;?></h2>
-                            <p class="sub-heading to-animate">Para nosotros es muy importante su opinión, sus quejas o sugerencias. Le responderemos lo más pronto posible</p>
+                            <p class="sub-heading to-animate"><?php echo $tem->descripcionContactos;?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -423,11 +424,11 @@
                             <ul class="fh5co-contact-info">
                                 <li class="fh5co-contact-address ">
                                     <i class="icon-home"></i>
-                                    El Carmen, Santa Cruz,, Cartago Province, Turrialba, Costa Rica.
+                                   <?php echo $tem->direccion;?>
                                 </li>
-                                <li><i class="icon-user"></i> Martín Solano Vargas- Gerente General <br> Gloriana Solano Pereira – Tienda de quesos </li>
-                                <li><i class="icon-phone"></i> (+506) 8829-8767 <br> (+506) 8318-7290</li>
-                                <li><i class="icon-envelope"></i>productoslacteoslasabras@gmail.com</li>
+                                <li><i class="icon-user"></i> <?php echo $tem->encargadoA;?> <br> <?php echo $tem->encargadoB;?></li>
+                                <li><i class="icon-phone"></i> (+506) <?php echo $tem->telefonoA;?> <br> (+506) <?php echo $tem->telefonoB;?></li>
+                                <li><i class="icon-envelope"></i><?php echo $tem->correo;?></li>
 
                             </ul>
                         </div>
@@ -435,17 +436,32 @@
                             <h3><?php echo $consulta; ?></h3>
                             <form action="home.php">
                                 <div class="form-group ">
-                                    <label for="name" class="sr-only">Nombre</label>
-                                    <input id="name" class="form-control" placeholder="Nombre" type="text">
+                                    <input id="name" class="form-control" placeholder="<?php 
+                                        if ($idiomaTemp == true) {
+                                            echo 'Nombre';                  
+                                        }else{
+                                            echo 'Name';
+                                        }
+                                        ?>" type="text" required>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input id="email" class="form-control" placeholder="Email" type="email">
+                                    <input id="email" class="form-control" placeholder="<?php 
+                                        if ($idiomaTemp == true) {
+                                            echo 'Correo';                  
+                                        }else{
+                                            echo 'Email';
+                                        }
+                                        ?>" type="email" required>
                                 </div>
 
                                 <div class="form-group ">
-                                    <label for="message" class="sr-only">Message</label>
-                                    <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="Mensaje"></textarea>
+                                    <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="<?php 
+                                        if ($idiomaTemp == true) {
+                                            echo 'Mensaje';                  
+                                        }else{
+                                            echo 'Message';
+                                        }
+                                        ?>" required></textarea>
                                 </div>
                                 <div class="form-group ">
                                     <input class="btn btn-primary" value="<?php echo $btnEnviarMensaje; ?>" type="submit">
@@ -496,16 +512,32 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Misión</h4>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <?php 
+                               if ($idiomaTemp == true) {
+                                    echo 'Misión';                  
+                                }else{
+                                    echo 'Mission';
+                                }
+                            ?>
+                        </h4>
                     </div>
                     <div class="modal-body">
-                        Elaborar Queso Turrialba y otros derivados lácteos de la más alta calidad, fieles a los métodos artesanos que aportamos en su elaboración, al sabor y la naturalidad necesaria, para ser un referente en nuestra región.
+                       <?php echo $tem->mision;?>
                     </div>
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Visión</h4>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <?php 
+                               if ($idiomaTemp == true) {
+                                    echo 'Visión';                  
+                                }else{
+                                    echo 'Vision';
+                                }
+                            ?>
+                        </h4>
                     </div>
                     <div class="modal-body">
-                        Lograr que nuestro Queso Turrialba y derivados lácteos puedan ser disfrutados en todo el territorio nacional, y por supuesto, sin olvidarnos de los valores que nos han posicionado como una de las mejores queseras de la zona.
+                        <?php echo $tem->vision;?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -541,22 +573,22 @@
                     <div class="modal-body">
                         <form class="form-horizontal" action="./administracion.php" target="_blank">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox"> Remember me
+                                            <input type="checkbox"> Recordarme
                                         </label>
                                     </div>
                                 </div>
