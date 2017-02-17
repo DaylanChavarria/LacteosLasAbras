@@ -16,13 +16,13 @@
 		//Obtiene los datos de la empresa en español
 		function getEmpresaEsData()
 		{
-			return $this->getEmpresaData(1);
+			return $this->getEmpresaData(0);
 		}
 
 		//Obtiene los datos de la empresa en ingles
 		function getEmpresaInData()
 		{
-			return $this->getEmpresaData(0);
+			return $this->getEmpresaData(1);
 		}
 
 		//Actualiza Empresa en español
@@ -47,6 +47,7 @@
 	        $query = "select * from la_empresa where atIdioma = " . $idioma;
 	        $result = mysqli_query($conn, $query);
 	        mysqli_close($conn);
+                $miEmpresa = NULL;
 	        if ($row = mysqli_fetch_array($result)) {
 	            $miEmpresa = new  Empresa($row['atId'], $row['atHistoria'], $row['atQuinesSomos'],
 	            $row['atDescripcionGaleria'], $row['atElaboracion'], $row['atDescripcionProductoA'],

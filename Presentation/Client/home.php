@@ -50,6 +50,8 @@
         <script src="../../ClientResource/js/jquery.min.js"></script>
          
          <?php
+            
+            include '../../Business/Empresa/EmpresaBusiness.php';
             include '../../Business/Titulos/TitulosBusiness.php';
         ?>
     </head>
@@ -64,6 +66,7 @@
          * 
          */
         $tituloBusiness = new TitulosBusiness();
+        $instEmpresaBusiness = new EmpresaBusiness();
         
 
         if (isset($_POST['lang'])) {
@@ -92,6 +95,9 @@
                 $denominacion = $titulos[15]->getNombre();
                 $contactenos = $titulos[16]->getNombre();
                 $consulta = $titulos[17]->getNombre();
+                
+                /* Descripciones de cada titulo*/
+               $tem = $instEmpresaBusiness->getEmpresaEsBusiness();
       
             } else if ($_POST['lang'] == "Ingles") {
                 $titulos = $tituloBusiness->obtenerTitulosInBusiness();
@@ -117,6 +123,9 @@
                 $denominacion = $titulos[15]->getNombre();
                 $contactenos = $titulos[16]->getNombre();
                 $consulta = $titulos[17]->getNombre();
+                
+              /* Descripciones de cada titulo*/
+               $tem = $instEmpresaBusiness->getEmpresaInBusiness();
             }
         } else {
              /* Para los botones de navegacion */
@@ -142,6 +151,12 @@
                 $denominacion = $titulos[15]->getNombre();
                 $contactenos = $titulos[16]->getNombre();
                 $consulta = $titulos[17]->getNombre();
+                
+                /* Descripciones de cada titulo*/
+               $tem = $instEmpresaBusiness->getEmpresaEsBusiness();
+             
+                
+               
         }
         ?>
 
@@ -163,9 +178,11 @@
                         </div>
                     </div>
                     <ul class="slides">
+                        <li style="background-image: url(../../ClientResource/images/turrialba.jpg);" data-stellar-background-ratio="0.5"></li>
                         <li style="background-image: url(../../ClientResource/images/img1.jpeg);" data-stellar-background-ratio="0.5"></li>
                         <li style="background-image: url(../../ClientResource/images/img3.jpeg);" data-stellar-background-ratio="0.5"></li>
                         <li style="background-image: url(../../ClientResource/images/img2.jpeg);" data-stellar-background-ratio="0.5"></li>
+                        
                     </ul>
 
                 </div>
@@ -189,25 +206,10 @@
                         <div class="fh5co-menu-2 dropdown">
                             <a href="#" data-nav-section="reservation"><?php echo $btnContactenos;?></a>
                             <a href="#" data-nav-section="localizacion"><?php echo $btnLocalizacion;?></a>
-
-                            <!--**************************--> 
-
-<!--                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $btnIdiomas;?></a>
-
-                            <ul class="dropdown-menu">
-                                <form method="post">
-                                    <li><input type="submit" value="Ingles" name="lang" id="langEn"/></li>
-                                    <li><input type="submit" value="Español" name="lang" id="langEs"/></li>
-                                    
-                                </form>
-                            </ul>-->
                             <a data-toggle="modal" href="#myModalLanguaje">     
                                 <?php echo $btnIdiomas;?>
-                            </a>  
-                            <!--*******************************-->
-                            
-                            <a data-toggle="modal" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión">
-                            </a>
+                            </a>                         
+                            <a data-toggle="modal" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión"></a>
 
                         </div>
                     </div>
@@ -217,8 +219,8 @@
 
             <div id="fh5co-about" data-section="about">
                 <div class="fh5co-2col fh5co-text">
-                    <h2 class="heading to-animate"><?php echo $historia;?></h2>
-                    <p class="to-animate"><span class="firstcharacter">H</span>ace 20 años inició un sueño con una pequeña finca y unas pocas vacas. Empezó una travesía y curiosidad sobre el proceso de la leche. La ilusión de superarse y la perseverancia lograron una realidad: dar el primer paso en el arte de hacer queso.
+                 <h2 class="heading to-animate"><?php echo $historia;?></h2>
+                   <!--    <p class="to-animate"><span class="firstcharacter">H</span>ace 20 años inició un sueño con una pequeña finca y unas pocas vacas. Empezó una travesía y curiosidad sobre el proceso de la leche. La ilusión de superarse y la perseverancia lograron una realidad: dar el primer paso en el arte de hacer queso.
                     </p>
                     <p class="to-animate">
                         Poco a poco la calidad de los productos nos impulsaron al crecimiento; nos incitaron a ampliar nuestra vista a un horizonte más ambicioso.En el transcurso del 2014 se inició la construcción de la planta procesadora, donde se unificaron los procesos de dos fincas en un solo lugar. 
@@ -226,16 +228,22 @@
                     <p class="to-animate">
                         Gente visionaria, luchadora y ansiosa por perfeccionar este arte, esto caracteriza a cada miembro de nuestra gran familia.
                         Nuestras arraigadas tradiciones combinan la dedicación por el trabajo, así como el ambiente acogedor que posee cada familia. 
+                    </p>-->
+                    <p>
+                        <?php echo $tem->historia ; ?>
                     </p>
 
                 </div>
                 <div class="fh5co-2col fh5co-text">
                     <h2 class="heading to-animate"><?php echo $quienesSomos;?></h2>
-                    <p class="to-animate">Nuestra planta procesadora se encuentra en Santa Cruz de Turrialba, en Cartago. Lugar que hoy goza del proceso para la certificación de Denominación de Origen por el QUESO TURRIALBA. 
-                    </p>
-                    <p class="to-animate">
+<!--                    <p class="to-animate">Nuestra planta procesadora se encuentra en Santa Cruz de Turrialba, en Cartago. Lugar que hoy goza del proceso para la certificación de Denominación de Origen por el QUESO TURRIALBA. 
+                    </p>-->
+<!--                    <p class="to-animate">
                         Nuestra empresa se ha distinguido por ser un proyecto familiar, lo que nació de un sueño ha visto la constante evolución, gracias al esfuerzo y dedicación de cada una de las personas que laboran en nuestro equipo. En consecuencia de ese sacrificio, hoy somos una empresa conformada por personas capacitadas en llevar altos estándares de calidad hasta su hogar.
                         Somos Productos Lácteos Las Abras.
+                    </p>-->
+                    <p class="to-animate">
+                        <?php echo $tem->quinesSomos ; ?>
                     </p>
 
 
@@ -454,7 +462,6 @@
         
         <div  id="mapa" data-section="localizacion">
             
-            <h3 class="to-animate-2" >Visita nuestra tienda</h3>
             <iframe id="mapa2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1389.3628505235206!2d-83.71807445348067!3d9.957938028180395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5f898bc2fb1af7c0!2sTienda+de+quesos+Layo!5e0!3m2!1ses!2ses!4v1485242938228" 
                     width="100%" height="250" frameborder="0" style="border:0s;"></iframe>
 
@@ -507,9 +514,9 @@
             </div>
         </div>
         
-        <div class="modal fade" id="myModalLanguaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+        <div class="modalLanguaje fade" id="myModalLanguaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modalLanguaje-dialog" role="document">
+                <div class="modalmodalLanguaje-content">
                     <form method="post">
                         <button type="submit" value="Ingles" name="lang" id="langEn"></button>
                         <button type="submit" value="Español" name="lang" id="langEs"></button>

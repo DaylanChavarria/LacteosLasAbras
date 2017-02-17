@@ -5,7 +5,7 @@
  * relacionadas a la tabla la_titulos
  * @author Daylan Chavarria
  */
-include 'Data.php';
+//include 'Data.php';
 include '../../Domain/Titulos.php';
 
 class TitulosData extends Data {
