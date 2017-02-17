@@ -27,12 +27,12 @@
 
 		//Actualiza Empresa en español
 		function actualizaEmpresaEsData($empresa){
-			return $this->actualizaEmpresaData($empresa,1);
+			return $this->actualizaEmpresaData($empresa,0);
 		}
 
 		//Actualiza Empresa en Ingles
 		function actualizaEmpresaInData($empresa){
-			return $this->actualizaEmpresaData($empresa,0);
+			return $this->actualizaEmpresaData($empresa,1);
 		}
 
 		/*
