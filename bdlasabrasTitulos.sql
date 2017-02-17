@@ -11,15 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `bdlasabras`
---
-
 DELIMITER $$
 --
 -- Procedimientos
@@ -45,16 +36,40 @@ atTelefonoB = atTelefonoB_
 
 WHERE atIdioma = atIdioma_$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarProducto` (IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `atcodigoProducto_` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarProducto` (IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `atcodigoProducto_` INT, IN `atNombreImagen_` TEXT,)  NO SQL
 Update la_productos Set 
-atNombre = atNombre_, atPrecio = atPrecio_, atDescripcion = atDescripcion_ where atIdioma = atIdioma_ AND atcodigoProducto = atCodigoProducto_$$
+atNombre = atNombre_, atPrecio = atPrecio_, atDescripcion = atDescripcion_, atNombreImagen=atNombreImagen_ where atIdioma = atIdioma_ AND atcodigoProducto = atCodigoProducto_$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarProducto` (IN `atId_` INT, IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `codigoProducto_` INT)  NO SQL
-INSERT INTO la_productos VALUES (null, atNombre_, atPrecio_, atDescripcion_, atIdioma_,codigoProducto_)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarProducto` (IN `atId_` INT, IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `codigoProducto_` INT, IN `atNombreImagen` text)  NO SQL
+INSERT INTO la_productos VALUES (0, atNombre_, atPrecio_, atDescripcion_, atIdioma_,codigoProducto_,atNombreImagen)$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerTodosProductos` (IN `atIdioma_` INT)  NO SQL
-select * from la_productos where atIdioma = atIdioma_$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerTodosProductos` (IN `atIdioma_` INT )  NO SQL
+ IF(atIdioma_ = -1)THEN
+        select * from la_productos ;
+    ELSE
+       select * from la_productos where atIdioma = atIdioma_;
+    end if;
 
+$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarProducto` (IN `atId_` INT )  NO SQL
+delete from la_productos where atcodigoProducto=atId_$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `IngresarImagenDeInicio` ( IN `atNombre_` TEXT,IN `atTipo_` INT
+		
+)  NO SQL INSERT INTO `la_imagen` VALUES(0, atNombre_,atTipo_);
+$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarImagenDeInicio` ( IN `atId_` INT
+		
+)  NO SQL DELETE FROM `la_imagen` WHERE atId=atId_;
+$$ 
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerImagenesInicio` (IN `atTipo_` INT )  NO SQL
+select * from la_imagen where atTipo = atTipo_$$
 DELIMITER ;
 
 -- --------------------------------------------------------

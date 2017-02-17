@@ -47,54 +47,44 @@
                                 <div class="box-content">
 
                                     <div class="box-content">
-                                        <form role="form">
+                                        <form action="../../Business/Inicio/InicioInsertarAccion.php" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label for="exampleInputFile">Cargar Imagen</label>
-                                                <input type="file" id="exampleInputFile">
-
-                                                <!--<p class="help-block">Example block-level help text here.</p>-->
+                                                <input type="file" id="exampleInputFile" name="archivo">
                                             </div>
-<!--                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Titulo</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Descripción</label>
-                                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                            </div>-->
-                                            
                                             <button type="submit" class="btn btn-default">Agregar</button>
                                         </form>
-
                                     </div>
-
                                     <br>
                                     <ul class="thumbnails gallery">
+
+                                        <?php
+                                        include '../../Business/Inicio/InicioBusiness.php';
+                                        $instBusiness = new InicioBusiness();
+                                        $resultado = $instBusiness->obtenerInicioBusiness();
+//                                        var_dump($resultado);
+                                        foreach ($resultado as $current) {
+                                            ?>
+                                            <li id="image-1" class="thumbnail">
+                                                <a style="background:url(./img/inicio/<?php echo $current->nombre ?>)"
+                                                   title="Sample Image 1" href="./img/inicio/<?php echo $current->nombre ?>">
+                                                    <img 
+                                                        class="grayscale" src="./img/inicio/<?php echo $current->nombre ?>"
+                                                        alt="Sample Image 1">
+                                                </a>
+                                            </li>
+                                            <?php
+                                        }
+                                        //llama a todas para eliminar
+                                        ?>
                                         <li id="image-1" class="thumbnail">
                                             <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/1.jpg)"
-                                               title="Sample Image 1" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/1.jpg"><img
+                                               title="Sample Image 1" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/1.jpg">
+                                                <img
                                                     class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/1.jpg"
-                                                    alt="Sample Image 1"></a>
+                                                    alt="Sample Image 1">
+                                            </a>
                                         </li>
-                                        <li id="image-2" class="thumbnail">
-                                            <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/2.jpg)"
-                                               title="Sample Image 2" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/2.jpg"><img
-                                                    class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/2.jpg"
-                                                    alt="Sample Image 2"></a>
-                                        </li>
-                                        <li id="image-3" class="thumbnail">
-                                            <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/3.jpg)"
-                                               title="Sample Image 3" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/3.jpg"><img
-                                                    class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/3.jpg"
-                                                    alt="Sample Image 3"></a>
-                                        </li>
-                                        <li id="image-4" class="thumbnail">
-                                            <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/4.jpg)"
-                                               title="Sample Image 4" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/4.jpg"><img
-                                                    class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/4.jpg"
-                                                    alt="Sample Image 4"></a>
-                                        </li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -128,4 +118,25 @@
 
         </div>
     </body>
+    <script>
+
+        (function ($) {
+            $.get = function (key) {
+                key = key.replace(/[\[]/, '\\[');
+                key = key.replace(/[\]]/, '\\]');
+                var pattern = "[\\?&]" + key + "=([^&#]*)";
+                var regex = new RegExp(pattern);
+                var url = unescape(window.location.href);
+                var results = regex.exec(url);
+                if (results === null) {
+                    return null;
+                } else {
+                    return results[1];
+                }
+            }
+        })(jQuery);
+
+        var getee = $.get("msg");
+        alert(getee);
+    </script>
 </html>

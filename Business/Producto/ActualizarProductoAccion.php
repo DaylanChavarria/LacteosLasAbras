@@ -1,45 +1,83 @@
 <?php
 
-	include './ProductoBusiness.php';
-	include '../Validaciones.php';
+include './ProductoBusiness.php';
+include '../Validaciones.php';
 
-	$instValidaciones = new Validaciones();
+$instValidaciones = new Validaciones();
+$resultValidaRecibidos = $instValidaciones->validaRecibidos(
+        array('precio', 'nombre', 'descripcion', 'nombrein', 'descripcionin', 'imagen', 'codigo'));
 
-	$resultValidaRecibidos = $instValidaciones->validaRecibidos( 
-		array('precio', 'nombre', 'descripcion','codigoProducto'));
+/* Si se recibieron todos los datos esperados */
+if (($resultValidaRecibidos == 1)) {
+    $precio = $_POST['precio']; //Solo es un precio
 
-	/*Si se recibieron todos los datos esperados*/
-	if ($resultValidaRecibidos) {
-		$precio = $_POST['precio'];	//Solo es un precio
-		$codigoProducto = $_POST['codigoProducto'];	//Solo es un codigoProducto
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
 
-		$nombre = $_POST['nombre'];
-		$descripcion = $_POST['descripcion'];
-		/*
-		* Una ves que se asegura que se recibieron los datos deseados, se validan campos vacios o
-		* datos no numericos en campos numericos. 
-		*/
+    $nombrein = $_POST['nombrein'];
+    $descripcionin = $_POST['descripcionin'];
 
-		//Se hace el llamado a la funcion que valida campos vacios.
-		$resultValidaVacios = $instValidaciones->validaVacios(array($nombre, $precio, $descripcion, $codigoProducto));
-			
-		//Se hace el llamado a la funcion que valida campos numericos.	
-		$resultValidaNumericos = $instValidaciones->validaNumericos(array($precio,$codigoProducto));
+    $codigo = $_POST['codigo'];
+//    $codigoin = $_POST['codigoin'];
+    $imagen = $_POST['imagen'];
 
-		//Se interpretan los resultados de las validaciones.
-		if(!$resultValidaVacios){
-			header("location: ../../Presentation/Admin/CRUD_Producto.php?msg=Todos los datos deben ser ingresados.");
-		}elseif (!$resultValidaNumericos) {
-			header("location: ../../Presentation/Admin/CRUD_Producto.php?msg=ERROR de formato, asegurese de ingresar solo numeros en los campos numericos.");
-		}else{
-			/*Si se recibieron todos los datos y  ninguno esta vacio*/
-			$producto = new Producto(0, $nombre, $precio, $descripcion, 0, $codigoProducto);
+    /*
+     * Una ves que se asegura que se recibieron los datos deseados, se validan campos vacios o
+     * datos no numericos en campos numericos. 
+     */
 
-			$instBusiness = new ProductoBusiness();
-			$result = $instBusiness->actualizarProductosEsBusiness($producto);
-			header("location: ../../Presentation/Admin/CRUD_Producto.php?msg=Actualizacion realizada con exito");
-		}
-	}
-	else header("location: ../../Presentation/Admin/CRUD_Producto.php?msg=No se recibieron todos los datos esperados");
+    //Se hace el llamado a la funcion que valida campos vacios.
+    $resultValidaVacios = $instValidaciones->validaVacios(array($nombre, $precio, $descripcion,
+        $nombrein, $descripcionin, $codigo,));
 
+    //Se hace el llamado a la funcion que valida campos numericos.	
+    $resultValidaNumericos = $instValidaciones->validaNumericos(array($precio));
+
+    //Se interpretan los resultados de las validaciones.
+    if (!$resultValidaVacios) {
+        header("location: ../../Presentation/Admin/administrarProductos.php?msg=Todos los datos deben ser ingresados.");
+    } elseif (!$resultValidaNumericos) {
+        header("location: ../../Presentation/Admin/administrarProductos.php?msg=ERROR de formato, asegurese de ingresar solo numeros en los campos numericos.");
+    } else {
+        $permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
+
+        //validar archivo
+//        $resultadoArchivo = $instValidaciones->validarArchivo('archivo');
+        if ($instValidaciones->validarArchivo('archivo')) {
+//             validar extensiones
+            if ($instValidaciones->validarExtensiones('archivo')) {
+                $ruta = "../../Presentation/Admin/img/productos/" . $_FILES['archivo']['name'];
+                if (!file_exists($ruta)) {
+
+                    unlink("../../Presentation/Admin/img/productos/". $imagen);
+                    $resultado = @move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta);
+                    if ($resultado) {
+                        $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $_FILES['archivo']['name']);
+                        $productoIn = new Producto(0, $nombrein, $precio, $descripcionin, 1, $codigo, $_FILES['archivo']['name']);
+                        $instBusiness = new ProductoBusiness();
+                        $instBusiness->actualizarProductosEsBusiness($productoEs);
+                        $instBusiness->actualizarProductosInBusiness($productoIn);
+                 
+                        header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito");
+                    } else {
+                        header("location: ../../Presentation/Admin/administrarProductos.php?msg=No se ingreso");
+                    }
+                } else {
+                    header("location: ../../Presentation/Admin/administrarProductos.php?msg=la imagen existe");
+                }
+            } else {
+                header("location: ../../Presentation/Admin/administrarProductos.php?msg=Archivo no permitido");
+            }
+        } else {
+            $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $imagen);
+            $productoIn = new Producto(0, $nombrein, $precio, $descripcionin, 1, $codigo, $imagen);
+            $instBusiness = new ProductoBusiness();
+            $instBusiness->actualizarProductosEsBusiness($productoEs);
+            $instBusiness->actualizarProductosInBusiness($productoIn);
+            header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito sin imagen");
+        }
+    }
+} else {
+    header("location: ../../Presentation/Admin/administrarProductos.php?msg=No se recibieron todos los datos esperados");
+}
 ?>

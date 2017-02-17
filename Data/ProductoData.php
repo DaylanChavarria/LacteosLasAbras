@@ -20,6 +20,10 @@ class ProductoData extends Data {
         return $this->obtenerProductosData(1);
     }
 
+    function obtenerTodoProductoData() {
+        return $this->obtenerProductosData(-1);
+    }
+
     //Actualizar
     function actualizarProductosEsData($producto) {
         return $this->actualizarProducto($producto, 0);
@@ -42,7 +46,7 @@ class ProductoData extends Data {
         mysqli_close($conn);
         $array = [];
         while ($row = mysqli_fetch_array($result)) {
-            $miProducto = new Producto($row['atId'], $row['atNombre'], $row['atPrecio'], $row['atDescripcion'], $row['atIdioma'], $row['atcodigoProducto']);
+            $miProducto = new Producto($row['atId'], $row['atNombre'], $row['atPrecio'], $row['atDescripcion'], $row['atIdioma'], $row['atcodigoProducto'], $row['atNombreImagen']);
             array_push($array, $miProducto);
         }
         return $array;
@@ -54,8 +58,9 @@ class ProductoData extends Data {
         $conn->set_charset('utf8');
 
         $query = "call ActualizarProducto('" . $producto->nombre . "', " . $producto->precio . ",'" .
-                $producto->descripcion . "', " . $idioma . ", " . $producto->codigoProducto . ")";
-
+                $producto->descripcion . "', " . $idioma . ", " . $producto->codigoProducto . ",'" . $producto->nombreImagen . "')";
+//        echo $query;
+//        exit;
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
         return $result;
@@ -69,15 +74,22 @@ class ProductoData extends Data {
         /* Primero se obtiene el nuevo codigo de producto */
         $resultCodigo = mysqli_query($conn, "select max(atcodigoProducto) from la_productos");
         $codigoProducto = (mysqli_fetch_array($resultCodigo)[0]) + 1;
-
         $queryEs = "call InsertarProducto(" . $productoEs->id . ", '" . $productoEs->nombre . "'," .
-                $productoEs->precio . ", '" . $productoEs->descripcion . "', " . $productoEs->idioma . ", " . $codigoProducto . ")";
-
+                $productoEs->precio . ", '" . $productoEs->descripcion . "', " . $productoEs->idioma . ", " . $codigoProducto . ",'" . $productoEs->nombreImagen . "')";
         $queryIn = "call InsertarProducto(" . $productoIn->id . ", '" . $productoIn->nombre . "'," .
-                $productoIn->precio . ", '" . $productoIn->descripcion . "', " . $productoIn->idioma . ", " . $codigoProducto . ")";
-
+                $productoIn->precio . ", '" . $productoIn->descripcion . "', " . $productoIn->idioma . ", " . $codigoProducto . ",'" . $productoEs->nombreImagen . "')";
         $result = mysqli_query($conn, $queryEs);
         $result = mysqli_query($conn, $queryIn);
+        mysqli_close($conn);
+        return $result;
+    }
+
+    //Insercion es solo una general, por ende no es publico ya que no tiene metodos especificos.
+    function eliminarProductoData($id) {
+        $conn = new mysqli($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+        $query = "call EliminarProducto(" . $id . ")";
+        $result = mysqli_query($conn, $query);
         mysqli_close($conn);
         return $result;
     }

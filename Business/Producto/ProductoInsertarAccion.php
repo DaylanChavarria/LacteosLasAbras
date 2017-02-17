@@ -40,7 +40,7 @@ if (($resultValidaRecibidos == 1) && ($resultadoArchivo == 1)) {
         $permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
         // validar extensiones
         if ($instValidaciones->validarExtensiones('archivo')) {
-            $ruta = "../Empresa/" . $_FILES['archivo']['name'];
+            $ruta = "../../Presentation/Admin/img/productos/" . $_FILES['archivo']['name'];
             if (!file_exists($ruta)) {
                 $resultado = @move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta);
                 if ($resultado) {

@@ -17,6 +17,14 @@ class ProductoBusiness extends ProductoData
 	{
 		return $this->obtenerProductosInData();
 	}
+	function obtenerTodoProductoBusiness()
+	{
+		return $this->obtenerTodoProductoData();
+	}
+//	function eliminarProductoBusiness()
+//	{
+//		return $this->eliminarProductoData();
+//	}
 
 	//******Actualizar Productos*****
 	function actualizarProductosEsBusiness($producto)
@@ -27,6 +35,10 @@ class ProductoBusiness extends ProductoData
 	function actualizarProductosInBusiness($producto)
 	{
 		return $this->actualizarProductosInData($producto);
+	}
+	function eliminarProductoBusiness($id)
+	{
+		return $this->eliminarProductoData($id);
 	}
 
 	//*********Insertar Productos*********

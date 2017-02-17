@@ -2,12 +2,9 @@
 <html lang="en">
     <head> 
         <meta charset="utf-8">
-        <title>Free HTML5 Bootstrap Admin Template</title>
+        <title>Productos</title>
     </head>
-
     <body>
-
-
         <!-- topbar ends -->
         <div class="ch-container">
             <div class="row">
