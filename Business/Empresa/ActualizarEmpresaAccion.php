@@ -48,9 +48,9 @@
 
 		//Se interpretan los resultados de las validaciones.
 		if(!$resultValidaVacios){
-			header("location: ../../Presentation/Admin/CRUD_Empresa.php?msg=Todos los datos deben ser ingresados.");
+			redireccionarConResultado("Todos los datos deben ser ingresados.");
 		}elseif (!$resultValidaNumericos) {
-			header("location: ../../Presentation/Admin/CRUD_Empresa.php?msg=ERROR de formato, asegurese de ingresar solo numeros en los campos numericos.");
+			redireccionarConResultado("ERROR de formato, asegurese de ingresar solo numeros en los campos numericos.");
 		}else{
 			/*Si se recibieron todos los datos, ninguno esta vacio*/
 			$empresa = new Empresa($Id, $historia, $quienesSomos, $descripcionGaleria, $elaboracion, $descripcionProductA,
@@ -58,9 +58,23 @@
 		        $encargadoA, $encargadoB, $mision, $vision, $idioma);
 
 			$instBusiness = new EmpresaBusiness();
-			$result = $instBusiness->actualizaEmpresaEsBusiness($empresa);
-			header("location: ../../Presentation/Admin/CRUD_Empresa.php?msg=Actualizacion realizada con exito");
+			if(isset($_GET['len']) && $_GET['len'] == 'es'){
+				$result = $instBusiness->actualizaEmpresaEsBusiness($empresa);
+				redireccionarConResultado("Actualizacion realizada con exito");
+			}else{
+				$result = $instBusiness->actualizaEmpresaInData($empresa);
+				redireccionarConResultado("Actualizacion realizada con exito");
+			}
 		}
 	}
-	else header("location: ../../Presentation/Admin/CRUD_Empresa.php?msg=No se recibieron todos los datos esperados");
+	else header("location: ../../Presentation/Admin/empresaEspanol.php?msg=No se recibieron todos los datos esperados");
+
+
+	function redireccionarConResultado($respuesta){
+		if(isset($_GET['len']) && $_GET['len'] == 'es'){
+				header("location: ../../Presentation/Admin/empresaEspanol.php?msg=".$respuesta);
+		}else{
+			header("location: ../../Presentation/Admin/empresaIngles.php?msg=".$respuesta);
+		}
+	} 
 ?>
