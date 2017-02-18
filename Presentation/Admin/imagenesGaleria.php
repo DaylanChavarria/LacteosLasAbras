@@ -12,10 +12,7 @@
         <!-- topbar ends -->
         <div class="ch-container">
             <div class="row">
-
-
                 <?php include './menuAdmin.php'; ?>
-
                 <div id="content" class="col-lg-10 col-sm-10">
                     <!-- content starts -->
                     <div>
@@ -38,26 +35,25 @@
                                 <div class="box-content">
 
                                     <div class="box-content">
-                                        <form role="form">
+                                        <form enctype="multipart/form-data" method="POST" action="../../Business/Galeria/GaleriaInsertarAccion.php">
                                             <div class="form-group">
                                                 <label for="exampleInputFile">Cargar Imagen</label>
-                                                <input type="file" id="exampleInputFile">
+                                                <input name="archivo" type="file" id="exampleInputFile">
 
                                                 <p class="help-block">Se recomienda subir imagenes con el tamaño: 1000 x 1000.</p>
                                             </div>
                                             <div class="form-group">
                                                 <span for="exampleInputEmail1" class="badge">Informacion en Español</span>
-                                               
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Español">
+                                                   <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Español">-->
                                                 <br>
-                                                <textarea class="form-control" id="exampleInputPassword1" placeholder="Descripción Español"></textarea>
+                                                <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Descripción Español"></textarea>
 
                                             </div>
                                             <div class="form-group">
                                                 <span for="exampleInputEmail1" class="badge">Informacion en Inglés</span>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Inglés">
+                                                <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Inglés">-->
                                                 <br>
-                                                <textarea class="form-control" id="exampleInputPassword1" placeholder="Descripción Inglés"></textarea>
+                                                <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripción Inglés"></textarea>
                                             </div>
 
                                             <button type="submit" class="btn btn-default">Agregar</button>
@@ -75,9 +71,27 @@
                 </div>
             </div>
             <hr>
-
-
-
         </div>
     </body>
+    <script>
+
+        (function ($) {
+            $.get = function (key) {
+                key = key.replace(/[\[]/, '\\[');
+                key = key.replace(/[\]]/, '\\]');
+                var pattern = "[\\?&]" + key + "=([^&#]*)";
+                var regex = new RegExp(pattern);
+                var url = unescape(window.location.href);
+                var results = regex.exec(url);
+                if (results === null) {
+                    return null;
+                } else {
+                    return results[1];
+                }
+            }
+        })(jQuery);
+
+        var getee = $.get("msg");
+        alert(getee);
+    </script>
 </html>

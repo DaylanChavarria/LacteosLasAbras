@@ -117,7 +117,8 @@ CREATE TABLE `la_galeria` (
   `atId` int(11) NOT NULL,
   `atNombre` text NOT NULL,
   `atDescripcion` text NOT NULL,
-  `atIdioma` int(11) NOT NULL
+  `atIdioma` int(11) NOT NULL,
+  `atcodigoImagen` int(11) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
