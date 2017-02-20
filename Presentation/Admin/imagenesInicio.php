@@ -65,7 +65,7 @@
 //                                        var_dump($resultado);
                                         foreach ($resultado as $current) {
                                             ?>
-                                            <li id="image-1" class="thumbnail">
+                                            <li id="image-1Prueba" class="thumbnail">
                                                 <a style="background:url(./img/inicio/<?php echo $current->nombre ?>)"
                                                    title="Sample Image 1" href="./img/inicio/<?php echo $current->nombre ?>">
                                                     <img 
@@ -77,7 +77,7 @@
                                         }
                                         //llama a todas para eliminar
                                         ?>
-                                        <li id="image-1" class="thumbnail">
+                                        <li id="image-2Prueba" class="thumbnail">
                                             <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/1.jpg)"
                                                title="Sample Image 1" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/1.jpg">
                                                 <img

@@ -196,10 +196,27 @@ function docReady() {
     //gallery delete
     $('.thumbnails').on('click', '.gallery-delete', function (e) {
         e.preventDefault();
+
+
+        /*Se obtiene el id: */
+        var elemento = e.srcElement ? e.srcElement : e.target;
+        var elemento2 = elemento.parentNode;
+        var elemento3 = elemento2.parentNode;
+        var elemento4 = elemento3.parentNode;
+        var elemento5 = elemento4.parentNode;
+
+        var idAction = elemento5.id;
+        alert("se va a eliminar la imagen: " + idAction);
+
+
+        /*
+        * Mediante ajax se elimina de la Base de datos
+        */
         //get image id
         //alert($(this).parents('.thumbnail').attr('id'));
         $(this).parents('.thumbnail').fadeOut();
     });
+    
     //gallery edit
     $('.thumbnails').on('click', '.gallery-edit', function (e) {
         e.preventDefault();
