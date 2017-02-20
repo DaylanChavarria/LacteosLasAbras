@@ -212,6 +212,8 @@ function docReady() {
         /*
         * Mediante ajax se elimina de la Base de datos
         */
+
+        
         //get image id
         //alert($(this).parents('.thumbnail').attr('id'));
         $(this).parents('.thumbnail').fadeOut();
