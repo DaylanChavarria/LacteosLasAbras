@@ -28,7 +28,7 @@ if (($resultValidaRecibidos == 1)) {
 
     //Se hace el llamado a la funcion que valida campos vacios.
     $resultValidaVacios = $instValidaciones->validaVacios(array($nombre, $precio, $descripcion,
-        $nombrein, $descripcionin, $codigo,));
+    $nombrein, $descripcionin, $codigo,));
 
     //Se hace el llamado a la funcion que valida campos numericos.	
     $resultValidaNumericos = $instValidaciones->validaNumericos(array($precio));
@@ -55,8 +55,8 @@ if (($resultValidaRecibidos == 1)) {
                         $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $_FILES['archivo']['name']);
                         $productoIn = new Producto(0, $nombrein, $precio, $descripcionin, 1, $codigo, $_FILES['archivo']['name']);
                         $instBusiness = new ProductoBusiness();
-                        $instBusiness->actualizarProductosEsBusiness($productoEs);
-                        $instBusiness->actualizarProductosInBusiness($productoIn);
+                        $instBusiness->actualizarImagenEsBusiness($productoEs);
+                        $instBusiness->actualizarImagenInBusiness($productoIn);
                  
                         header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito");
                     } else {
@@ -72,8 +72,8 @@ if (($resultValidaRecibidos == 1)) {
             $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $imagen);
             $productoIn = new Producto(0, $nombrein, $precio, $descripcionin, 1, $codigo, $imagen);
             $instBusiness = new ProductoBusiness();
-            $instBusiness->actualizarProductosEsBusiness($productoEs);
-            $instBusiness->actualizarProductosInBusiness($productoIn);
+            $instBusiness->actualizarImagenEsBusiness($productoEs);
+            $instBusiness->actualizarImagenInBusiness($productoIn);
             header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito sin imagen");
         }
     }

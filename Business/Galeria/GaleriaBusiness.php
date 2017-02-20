@@ -9,8 +9,8 @@ include '../../Data/GaleriaData.php';
 class GaleriaBusiness extends GaleriaData {
 
 //*******Obtener Productos******
-    function ingresarGaleriaBusiness($imagen,$imagenin) {
-        return $this->ingresarGaleriaData($imagen,$imagenin);
+    function ingresarGaleriaBusiness($imagen, $imagenin) {
+        return $this->ingresarGaleriaData($imagen, $imagenin);
     }
 
     function eliminarGaleriaBusiness() {
@@ -19,6 +19,18 @@ class GaleriaBusiness extends GaleriaData {
 
     function obtenerGaleriaBusiness() {
         return $this->obtenerGaleriaData();
+    }
+
+    function obtenerImagenesGaleriaBusiness() {
+        return $this->obtenerImagenesGaleriaData();
+    }
+
+    function actualizarImagenEsBusiness($producto) {
+        return $this->actualizarImagenEsData($producto);
+    }
+
+    function actualizarImagenInBusiness($producto) {
+        return $this->actualizarImagenInData($producto);
     }
 
 }

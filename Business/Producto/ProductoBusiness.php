@@ -36,6 +36,8 @@ class ProductoBusiness extends ProductoData
 	{
 		return $this->actualizarProductosInData($producto);
 	}
+        
+        
 	function eliminarProductoBusiness($id)
 	{
 		return $this->eliminarProductoData($id);

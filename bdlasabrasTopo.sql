@@ -3,13 +3,22 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-02-2017 a las 01:29:05
--- Versión del servidor: 10.1.19-MariaDB
--- Versión de PHP: 7.0.13
+-- Tiempo de generación: 20-02-2017 a las 20:16:06
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `bdlasabras`
+--
 
 DELIMITER $$
 --
@@ -36,40 +45,50 @@ atTelefonoB = atTelefonoB_
 
 WHERE atIdioma = atIdioma_$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarProducto` (IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `atcodigoProducto_` INT, IN `atNombreImagen_` TEXT,)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarGaleria` (IN `atNombre_` TEXT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `atcodigoImagen_` INT)  NO SQL
+Update la_galeria Set atNombre = atNombre_, atDescripcion = atDescripcion_ where atIdioma = atIdioma_ AND atcodigoProducto = atCodigoProducto_$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarProducto` (IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `atcodigoProducto_` INT, IN `atNombreImagen_` TEXT)  NO SQL
 Update la_productos Set 
 atNombre = atNombre_, atPrecio = atPrecio_, atDescripcion = atDescripcion_, atNombreImagen=atNombreImagen_ where atIdioma = atIdioma_ AND atcodigoProducto = atCodigoProducto_$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarProducto` (IN `atId_` INT, IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `codigoProducto_` INT, IN `atNombreImagen` text)  NO SQL
-INSERT INTO la_productos VALUES (0, atNombre_, atPrecio_, atDescripcion_, atIdioma_,codigoProducto_,atNombreImagen)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarImagenDeInicio` (IN `atId_` INT)  NO SQL
+DELETE FROM `la_imagen` WHERE atId=atId_$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerTodosProductos` (IN `atIdioma_` INT )  NO SQL
- IF(atIdioma_ = -1)THEN
-        select * from la_productos ;
-    ELSE
-       select * from la_productos where atIdioma = atIdioma_;
-    end if;
-
-$$
-
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarProducto` (IN `atId_` INT )  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarProducto` (IN `atId_` INT)  NO SQL
 delete from la_productos where atcodigoProducto=atId_$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `IngresarImagenDeInicio` (IN `atNombre_` TEXT, IN `atTipo_` INT)  NO SQL
+INSERT INTO `la_imagen` VALUES(0, atNombre_,atTipo_)$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `IngresarImagenDeInicio` ( IN `atNombre_` TEXT,IN `atTipo_` INT
-		
-)  NO SQL INSERT INTO `la_imagen` VALUES(0, atNombre_,atTipo_);
-$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `IngresarImagenEnGaleria` (IN `atNombre_` TEXT, IN `atDescripcion_` TEXT, IN `atTipo_` INT, IN `atCodigoImagen_` INT)  NO SQL
+INSERT INTO `la_galeria` VALUES(0, atNombre_,atDescripcion_,atTipo_,atCodigoImagen_)$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarProducto` (IN `atId_` INT, IN `atNombre_` TEXT, IN `atPrecio_` INT, IN `atDescripcion_` TEXT, IN `atIdioma_` INT, IN `codigoProducto_` INT, IN `atNombreImagen` TEXT)  NO SQL
+INSERT INTO la_productos VALUES (0, atNombre_, atPrecio_, atDescripcion_, atIdioma_,codigoProducto_,atNombreImagen)$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarImagenDeInicio` ( IN `atId_` INT
-		
-)  NO SQL DELETE FROM `la_imagen` WHERE atId=atId_;
-$$ 
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerImagenesInicio` (IN `atTipo_` INT )  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerImagenesInicio` (IN `atTipo_` INT)  NO SQL
 select * from la_imagen where atTipo = atTipo_$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerTodosGaleria` (IN `atIdioma_` INT)  NO SQL
+IF(atIdioma_ = -1)THEN
+        select * from la_galeria ;
+    ELSE
+       select * from la_galeria where atIdioma = atIdioma_;
+    end if$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerTodosProductos` (IN `atIdioma_` INT)  NO SQL
+IF(atIdioma_ = -1)THEN
+        select * from la_productos ;
+
+
+    ELSE
+
+
+       select * from la_productos where atIdioma = atIdioma_;
+
+    end if$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -118,18 +137,22 @@ CREATE TABLE `la_galeria` (
   `atNombre` text NOT NULL,
   `atDescripcion` text NOT NULL,
   `atIdioma` int(11) NOT NULL,
-  `atcodigoImagen` int(11) NOT NULL,
+  `atcodigoImagen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `la_galeria`
 --
 
-INSERT INTO `la_galeria` (`atId`, `atNombre`, `atDescripcion`, `atIdioma`) VALUES
-(1, 'imagen1', 'hermosa', 0),
-(2, 'image1', 'beatiful', 1),
-(3, 'imagen2', 'hermosa', 0),
-(4, 'image2', 'beatiful', 1);
+INSERT INTO `la_galeria` (`atId`, `atNombre`, `atDescripcion`, `atIdioma`, `atcodigoImagen`) VALUES
+(1, '2.jpg', 'JCCG', 0, 1),
+(2, '2.jpg', 'YGCSH', 1, 1),
+(3, 'Tulips.jpg', 'CDF', 0, 2),
+(4, 'Tulips.jpg', 'FDSAFSD', 1, 2),
+(5, 'Chrysanthemum.jpg', 'DSDASF', 0, 3),
+(6, 'Chrysanthemum.jpg', 'ASFASFSA', 1, 3),
+(7, 'Desert.jpg', 'FSFSDFDS', 0, 4),
+(8, 'Desert.jpg', 'FDFSDFSDF', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -148,10 +171,8 @@ CREATE TABLE `la_imagen` (
 --
 
 INSERT INTO `la_imagen` (`atId`, `atNombre`, `atTipo`) VALUES
-(1, 'imagen1', 0),
-(2, 'image2', 1),
-(3, 'imagen3', 0),
-(4, 'image4', 1);
+(1, 'jarra.jpeg', 0),
+(2, 'Penguins.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -174,12 +195,10 @@ CREATE TABLE `la_productos` (
 --
 
 INSERT INTO `la_productos` (`atId`, `atNombre`, `atPrecio`, `atDescripcion`, `atIdioma`, `atcodigoProducto`, `atNombreImagen`) VALUES
-(1, 'Producto 1', 500, 'Calidad', 0, 0, 'abc'),
-(2, 'Product 1', 500, 'Quality', 1, 0, 'abc'),
-(13, 'nombre español', 1250, 'descripcion español', 0, 1, 'abc'),
-(14, 'nombre en ingles', 1250, 'descri ingles', 1, 1, 'sd'),
-(15, 'hjgfd', 1111, 'nomen', 0, 2, 'ds'),
-(16, 'nomin', 1111, 'descri in', 1, 2, 'ds');
+(1, 'aAaAaxsxs', 32323, 'qewewe', 0, 1, 'Penguins.jpg'),
+(2, 'qwewe', 32323, 'qewew', 1, 1, 'Penguins.jpg'),
+(5, 's', 1231312, 's', 0, 2, '2.jpg'),
+(6, 's', 1231312, 's', 1, 2, '2.jpg');
 
 -- --------------------------------------------------------
 
@@ -285,17 +304,17 @@ ALTER TABLE `la_empresa`
 -- AUTO_INCREMENT de la tabla `la_galeria`
 --
 ALTER TABLE `la_galeria`
-  MODIFY `atId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `atId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `la_imagen`
 --
 ALTER TABLE `la_imagen`
-  MODIFY `atId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `atId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `la_productos`
 --
 ALTER TABLE `la_productos`
-  MODIFY `atId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `atId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `la_titulos`
 --

@@ -47,8 +47,6 @@
                         $instBusiness = new ProductoBusiness();
                         $resultado = $instBusiness->obtenerTodoProductoBusiness();
                         for ($index = 0; $index < sizeof($resultado); $index = $index + 2) {
-//                            echo $resultado[$index]->nombre . '</br>';
-//                            echo $resultado[$index + 1]->nombre . '</br>';
                             ?>
                             <form method="POST" action="../../Business/Producto/ActualizarProductoAccion.php" enctype="multipart/form-data" >
                                 <div class="box col-md-6">
@@ -82,7 +80,7 @@
                                                 </div>  
                                                 <div class="col-md-6">
                                                     <input style="visibility: hidden" name="codigo"  value="<?php echo $resultado[$index]->codigoProducto ?>"> <br/>
-                                                    <!--<input style="visibility: hidden" name="codigoin"  value="<?php echo $resultado[$index + 1]->codigoProducto ?>"> <br/>-->
+                                                    <!--<input style="visibility: hidden" name="codigoin"  value="<?php // echo $resultado[$index + 1]->codigoProducto ?>"> <br/>-->
                                                 </div>  
                                             </div>
                                         </div>
