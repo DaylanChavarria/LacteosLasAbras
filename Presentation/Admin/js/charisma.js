@@ -197,15 +197,15 @@ function docReady() {
     $('.thumbnails').on('click', '.gallery-delete', function (e) {
         var eliminado = false;
 
-        /*Se obtiene el id: */
+        /*Se obtiene el id y la ruta de la imagen*/
         var elemento = e.srcElement ? e.srcElement : e.target;
         var elemento2 = elemento.parentNode;
         var elemento3 = elemento2.parentNode;
         var elemento4 = elemento3.parentNode;
         var elemento5 = elemento4.parentNode;
 
-        var idAction = elemento5.id;
-        alert("se va a eliminar la imagen: " + idAction);
+        var idAction = elemento5.id.split("&")[0];
+        var srcImage = elemento5.id.split("&")[1];
 
 
         /*
@@ -225,7 +225,7 @@ function docReady() {
         xhttp.open("POST", "../../Business/Inicio/EliminarInicioAccion.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        xhttp.send("id="+ idAction);
+        xhttp.send("id="+ idAction + "&srcImage="+ srcImage);
 
         /*
         * Fin de consulta por ajax
