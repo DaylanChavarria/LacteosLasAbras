@@ -43,7 +43,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li class="divider"></li>
-                <li><a href="login.html">Cerrar Sesión</a></li>
+                <li><a href="../../Business/Ingreso/LogoutAction.php">Cerrar Sesión</a></li>
             </ul>
         </div>
         <!-- user dropdown ends -->

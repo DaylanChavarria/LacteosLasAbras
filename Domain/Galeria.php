@@ -11,14 +11,14 @@ class Galeria {
     public $nombre;
     public $descripcion;
     public $idioma;
-    public $atcodigoImagen;
+    public $codigoImagen;
 
-    function Galeria($Id, $nombre, $descripcion, $idioma, $atcodigoImagen) {
+    function Galeria($Id, $nombre, $descripcion, $idioma, $codigoImagen) {
         $this->Id = $Id;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->idioma = $idioma;
-        $this->atcodigoImagen = $atcodigoImagen;
+        $this->codigoImagen = $codigoImagen;
     }
 
 }

@@ -56,12 +56,12 @@ class GaleriaData extends Data {
     }
 
     //Actualizar
-    function actualizarProductosEsData($producto) {
-        return $this->actualizarProducto($producto, 0);
+    function actualizarImagenEsData($producto) {
+        return $this->actualizarGaleria($producto, 0);
     }
 
-    function actualizarProductosInData($producto) {
-        return $this->actualizarProducto($producto, 1);
+    function actualizarImagenInData($producto) {
+        return $this->actualizarGaleria($producto, 1);
     }
 
     function obtenerData($tipo) {
@@ -82,7 +82,7 @@ class GaleriaData extends Data {
     private function actualizarGaleria($galeria, $idioma) {
         $conn = new mysqli($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
-        $query = "call ActualizarImagen('" . $galeria->nombre . "'," . $galeria->descripcion . "', " . $idioma . ", " . $galeria->codigoProducto . ")";
+        $query = "call ActualizarGaleria('" . $galeria->nombre . "','" . $galeria->descripcion . "'," . $idioma . "," . $galeria->codigoImagen . ")";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
         return $result;
