@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION['user'])) {
+    
+} else {
+    header("location: ./administracion.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head> 
@@ -52,14 +62,14 @@
                                                 <div class="col-md-6">
                                                     <span class="badge">Español</span>
                                                     <!--<input type="text" class="form-control" placeholder="Titulo de la imagen" > <br/>-->
-                                                    <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"></textarea><br/>
+                                                    <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index]->descripcion ?></textarea><br/>
                                                     <span class="badge">Inglés</span>
                                                     <!--<input type="text" class="form-control" placeholder="Titulo de la imagen" > <br/>-->
-                                                    <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"></textarea>
+                                                    <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index]->descripcion ?></textarea>
                                                 </div>  
 
                                                 <div class="col-md-6">
-                                                    <input style="visibility: hidden" name="codigo"  value="<?php echo $resultado[$index]->atcodigoImagen ?>"> <br/>
+                                                    <input style="visibility: hidden" name="codigo"  value="<?php echo $resultado[$index]->codigoImagen ?>"> <br/>
                                                     <input style="visibility: hidden" name="imagen"  value="<?php echo $resultado[$index + 1]->nombre ?>"> <br/>
                                                 </div>  
                                             </div>

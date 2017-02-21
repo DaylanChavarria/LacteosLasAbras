@@ -1,0 +1,19 @@
+.centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+/*	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;*/
+}
+.a{
+/*	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;*/
+background-color: red;
+}
+
+label.label-floatlabel {
+    font-weight: bold;
+    /*color: #46b8da;*/
+    font-size: 11px;
+}

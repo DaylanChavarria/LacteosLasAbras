@@ -38,15 +38,17 @@ if (($resultValidaRecibidos == 1)) {
                 $ruta = "../../Presentation/Admin/img/galeria/" . $_FILES['archivo']['name'];
                 if (!file_exists($ruta)) {
 
+
+
                     unlink("../../Presentation/Admin/img/galeria/" . $imagen);
                     $resultado = @move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta);
                     if ($resultado) {
-                        $productoEs = new Galeria(0, $imagen, $descripcion, 0, $codigo, $_FILES['archivo']['name']);
-                        $productoIn = new Galeria(0, $imagen, $descripcionin, 1, $codigo, $_FILES['archivo']['name']);
+
+
+
+                        $productoEs = new Galeria(0, $_FILES['archivo']['name'], $descripcion, 0, $codigo);
+                        $productoIn = new Galeria(0, $_FILES['archivo']['name'], $descripcionin, 1, $codigo);
                         $instBusiness = new GaleriaBusiness();
-
-
-
                         $instBusiness->actualizarImagenEsBusiness($productoEs);
                         $instBusiness->actualizarImagenInBusiness($productoIn);
 
@@ -63,8 +65,8 @@ if (($resultValidaRecibidos == 1)) {
             }
         } else {
 
-            $productoEs = new Galeria(0, $_FILES['archivo']['name'], $descripcion, 0, $codigo);
-            $productoIn = new Galeria(0, $_FILES['archivo']['name'], $descripcionin, 1, $codigo);
+            $productoEs = new Galeria(0, $imagen, $descripcion, 0, $codigo);
+            $productoIn = new Galeria(0, $imagen, $descripcionin, 1, $codigo);
 
             $instBusiness = new GaleriaBusiness();
             $instBusiness->actualizarImagenEsBusiness($productoEs);
