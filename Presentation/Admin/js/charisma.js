@@ -195,8 +195,7 @@ function docReady() {
     //gallery image controls example
     //gallery delete
     $('.thumbnails').on('click', '.gallery-delete', function (e) {
-        e.preventDefault();
-
+        var eliminado = false;
 
         /*Se obtiene el id: */
         var elemento = e.srcElement ? e.srcElement : e.target;
@@ -213,10 +212,30 @@ function docReady() {
         * Mediante ajax se elimina de la Base de datos
         */
 
-        
-        //get image id
-        //alert($(this).parents('.thumbnail').attr('id'));
-        $(this).parents('.thumbnail').fadeOut();
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                if(this.responseText.trim() == 'true'){               
+                    /*Si se realizo la eliminacion en la BD, se elimina en la interfaz*/
+                    eliminado = true;
+                }
+            }
+        };
+        xhttp.open("POST", "../../Business/Inicio/EliminarInicioAccion.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhttp.send("id="+ idAction);
+
+        /*
+        * Fin de consulta por ajax
+        */
+
+        if(eliminado = true){
+            e.preventDefault();
+            $(this).parents('.thumbnail').fadeOut();
+        }
+
     });
     
     //gallery edit
