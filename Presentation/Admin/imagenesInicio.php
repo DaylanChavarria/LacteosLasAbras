@@ -75,7 +75,8 @@ if (isset($_SESSION['user'])) {
 //                                        var_dump($resultado);
                                         foreach ($resultado as $current) {
                                             ?>
-                                            <li id="<?php echo $current->Id . '&' . $current->nombre ?>" class="thumbnail">
+                                            <li id="<?php echo $current->Id . '&' . $current->nombre .'&inicio' ?>"
+                                             class="thumbnail">
                                                 <a style="background:url(./img/inicio/<?php echo $current->nombre ?>)"
                                                    title="Sample Image 1" href="./img/inicio/<?php echo $current->nombre ?>">
                                                     <img 

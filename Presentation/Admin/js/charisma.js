@@ -206,7 +206,7 @@ function docReady() {
 
         var idAction = elemento5.id.split("&")[0];
         var srcImage = elemento5.id.split("&")[1];
-
+        var tabla = elemento5.id.split("&")[2];
 
         /*
         * Mediante ajax se elimina de la Base de datos
@@ -219,14 +219,25 @@ function docReady() {
                 if(this.responseText.trim() == 'true'){               
                     /*Si se realizo la eliminacion en la BD, se elimina en la interfaz*/
                     eliminado = true;
+                    
                 }
             }
         };
-        xhttp.open("POST", "../../Business/Inicio/EliminarInicioAccion.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        xhttp.send("id="+ idAction + "&srcImage="+ srcImage);
+        if(tabla == 'inicio'){
+            xhttp.open("POST", "../../Business/Inicio/EliminarInicioAccion.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
+            xhttp.send("id="+ idAction + "&srcImage="+ srcImage);
+
+        }
+        else{
+            xhttp.open("POST", "../../Business/Galeria/EliminarGaleriaAccion.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send("id="+ idAction + "&srcImage="+ srcImage);
+        }
+        
         /*
         * Fin de consulta por ajax
         */

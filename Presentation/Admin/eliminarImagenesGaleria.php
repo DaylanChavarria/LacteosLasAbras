@@ -14,6 +14,13 @@ if (isset($_SESSION['user'])) {
 
         <meta charset="utf-8">
         <title>Lácteos las Abras</title>  
+
+        <?php 
+            /* Se obtienen todas las imágenes */
+            include '../../Business/Galeria/GaleriaBusiness.php';
+            $instGaleriaBusiness = new GaleriaBusiness();
+            $listImage = $instGaleriaBusiness->obtenerImagenesGaleriaBusiness();
+        ?>
     </head>
 
     <body>
@@ -60,30 +67,23 @@ if (isset($_SESSION['user'])) {
 
                                     <br>
                                     <ul class="thumbnails gallery">
-                                        <li id="image-1" class="thumbnail">
-                                            <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/1.jpg)"
-                                               title="Sample Image 1" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/1.jpg"><img
-                                                    class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/1.jpg"
-                                                    alt="Sample Image 1"></a>
-                                        </li>
-                                        <li id="image-2" class="thumbnail">
-                                            <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/2.jpg)"
-                                               title="Sample Image 2" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/2.jpg"><img
-                                                    class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/2.jpg"
-                                                    alt="Sample Image 2"></a>
-                                        </li>
-                                        <li id="image-3" class="thumbnail">
-                                            <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/3.jpg)"
-                                               title="Sample Image 3" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/3.jpg"><img
-                                                    class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/3.jpg"
-                                                    alt="Sample Image 3"></a>
-                                        </li>
-                                        <li id="image-4" class="thumbnail">
-                                            <a style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/4.jpg)"
-                                               title="Sample Image 4" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/4.jpg"><img
-                                                    class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/4.jpg"
-                                                    alt="Sample Image 4"></a>
-                                        </li>
+
+                                    <?php
+                                    for ($cont = 0; $cont < count($listImage);$cont += 2) {
+                                        $tem = $listImage[$cont];
+                                    ?>
+                                    <li id="<?php echo $tem->codigoImagen . '&' . $tem->nombre . '&galeria' ?>"
+                                     class="thumbnail">
+                                        <a style="background:url(./img/galeria/<?php echo $tem->nombre ?>)"
+                                           title="Sample Image 1" href="./img/galeria/<?php echo $tem->nombre ?>">
+                                            <img 
+                                                class="grayscale" src="./img/galeria/<?php echo $tem->nombre ?>"
+                                                alt="Sample Image 1">
+                                        </a>
+                                    </li>
+                                    <?php
+                                        }
+                                    ?>
 
                                     </ul>
                                 </div>
