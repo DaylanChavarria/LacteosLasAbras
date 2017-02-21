@@ -55,8 +55,8 @@ if (($resultValidaRecibidos == 1)) {
                         $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $_FILES['archivo']['name']);
                         $productoIn = new Producto(0, $nombrein, $precio, $descripcionin, 1, $codigo, $_FILES['archivo']['name']);
                         $instBusiness = new ProductoBusiness();
-                        $instBusiness->actualizarImagenEsBusiness($productoEs);
-                        $instBusiness->actualizarImagenInBusiness($productoIn);
+                        $instBusiness->actualizarProductosEsBusiness($productoEs);
+                        $instBusiness->actualizarProductosInBusiness($productoIn);
                  
                         header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito");
                     } else {
@@ -72,8 +72,8 @@ if (($resultValidaRecibidos == 1)) {
             $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $imagen);
             $productoIn = new Producto(0, $nombrein, $precio, $descripcionin, 1, $codigo, $imagen);
             $instBusiness = new ProductoBusiness();
-            $instBusiness->actualizarImagenEsBusiness($productoEs);
-            $instBusiness->actualizarImagenInBusiness($productoIn);
+            $instBusiness->actualizarProductosEsBusiness($productoEs);
+            $instBusiness->actualizarProductosInBusiness($productoIn);
             header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito sin imagen");
         }
     }

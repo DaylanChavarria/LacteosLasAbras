@@ -195,11 +195,60 @@ function docReady() {
     //gallery image controls example
     //gallery delete
     $('.thumbnails').on('click', '.gallery-delete', function (e) {
-        e.preventDefault();
-        //get image id
-        //alert($(this).parents('.thumbnail').attr('id'));
-        $(this).parents('.thumbnail').fadeOut();
+        var eliminado = false;
+
+        /*Se obtiene el id y la ruta de la imagen*/
+        var elemento = e.srcElement ? e.srcElement : e.target;
+        var elemento2 = elemento.parentNode;
+        var elemento3 = elemento2.parentNode;
+        var elemento4 = elemento3.parentNode;
+        var elemento5 = elemento4.parentNode;
+
+        var idAction = elemento5.id.split("&")[0];
+        var srcImage = elemento5.id.split("&")[1];
+        var tabla = elemento5.id.split("&")[2];
+
+        /*
+        * Mediante ajax se elimina de la Base de datos
+        */
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                if(this.responseText.trim() == 'true'){               
+                    /*Si se realizo la eliminacion en la BD, se elimina en la interfaz*/
+                    eliminado = true;
+                    
+                }
+            }
+        };
+
+        if(tabla == 'inicio'){
+            xhttp.open("POST", "../../Business/Inicio/EliminarInicioAccion.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send("id="+ idAction + "&srcImage="+ srcImage);
+
+        }
+        else{
+            xhttp.open("POST", "../../Business/Galeria/EliminarGaleriaAccion.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send("id="+ idAction + "&srcImage="+ srcImage);
+        }
+        
+        /*
+        * Fin de consulta por ajax
+        */
+
+        if(eliminado = true){
+            e.preventDefault();
+            $(this).parents('.thumbnail').fadeOut();
+        }
+
     });
+    
     //gallery edit
     $('.thumbnails').on('click', '.gallery-edit', function (e) {
         e.preventDefault();

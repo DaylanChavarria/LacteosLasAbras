@@ -13,8 +13,8 @@ class GaleriaBusiness extends GaleriaData {
         return $this->ingresarGaleriaData($imagen, $imagenin);
     }
 
-    function eliminarGaleriaBusiness() {
-        return $this->eliminarGaleriaData();
+    function eliminarGaleriaBusiness($id) {
+        return $this->eliminarGaleriaData($id);
     }
 
     function obtenerGaleriaBusiness() {

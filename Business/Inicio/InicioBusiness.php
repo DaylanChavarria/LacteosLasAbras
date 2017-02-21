@@ -13,8 +13,8 @@ class InicioBusiness extends InicioData {
         return $this->ingresarInicioData($imagen);
     }
 
-    function eliminarInicioBusiness() {
-        return $this->eliminarInicioData();
+    function eliminarInicioBusiness($id) {
+        return $this->eliminarInicioData($id);
     }
 
     function obtenerInicioBusiness() {

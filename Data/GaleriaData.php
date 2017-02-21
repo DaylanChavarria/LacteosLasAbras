@@ -26,7 +26,7 @@ class GaleriaData extends Data {
     function eliminarGaleriaData($id) {
         $conn = new mysqli($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
-        $query = "call EliminarImagenDeInicio('" . $id . ")";
+        $query = "call EliminarImagenGaleria(" . $id . ")";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
         return $result;
@@ -87,7 +87,6 @@ class GaleriaData extends Data {
         mysqli_close($conn);
         return $result;
     }
-
 }
 
 ?>
