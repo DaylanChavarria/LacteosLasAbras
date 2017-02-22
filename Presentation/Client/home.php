@@ -438,7 +438,7 @@ for ($i = 0; $i < count($parrafos); $i++) {
                                     } else {
                                         echo 'Name';
                                     }
-?>" type="text" required>
+?> "type="text" required>
                                 </div>
                                 <div class="form-group ">
                                     <input id="email" class="form-control" placeholder="<?php
@@ -567,17 +567,17 @@ if ($idiomaTemp == true) {
                         <h4 class="modal-title" id="modalSesion">Iniciar Sesión</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="./administracion.php" target="_blank">
+                        <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" target="_blank">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+                                    <input name="email" type="emailb" class="form-control" id="inputEmail3" placeholder="Email" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+                                    <input name="password" type="passwordb" class="form-control" id="inputPassword3" placeholder="Password" required>
                                 </div>
                             </div>
                             <div class="form-group">

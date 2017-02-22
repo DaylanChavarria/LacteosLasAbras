@@ -30,7 +30,7 @@ if (!isset($_SESSION)) {
                     </div>
                     <h1>Bienvenido Administrador</h1>   
                 </div>
-                <div id="content" class="col-lg-4 col-sm-4">
+<!--                <div id="content" class="col-lg-4 col-sm-4">
                     <?php
                     if (!isset($_SESSION['user'])) {
                         ?>
@@ -58,7 +58,7 @@ if (!isset($_SESSION)) {
                         <?php
                     }
                     ?>
-                </div>
+                </div>-->
             </div>
         </div>
 

@@ -65,7 +65,7 @@ if (isset($_SESSION['user'])) {
                                                     <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index]->descripcion ?></textarea><br/>
                                                     <span class="badge">Inglés</span>
                                                     <!--<input type="text" class="form-control" placeholder="Titulo de la imagen" > <br/>-->
-                                                    <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index]->descripcion ?></textarea>
+                                                    <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index+1]->descripcion ?></textarea>
                                                 </div>  
 
                                                 <div class="col-md-6">
