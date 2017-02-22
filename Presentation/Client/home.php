@@ -204,7 +204,7 @@
                             <a href="#" data-nav-section="reservation"><?php echo $btnContactenos; ?></a>
                             <a href="#" data-nav-section="localizacion"><?php echo $btnLocalizacion; ?></a>
                             <a data-toggle="modal" href="#myModalLanguaje">     
-<?php echo $btnIdiomas; ?>
+                                <?php echo $btnIdiomas; ?>
                             </a>                         
                             <a data-toggle="modal" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión"></a>
 
@@ -217,31 +217,31 @@
             <div id="fh5co-about" data-section="about">
                 <div class="fh5co-2col fh5co-text">
                     <h2 class="heading to-animate"><?php echo $historia; ?></h2>
-<?php
-$parrafos = explode("|", $tem->historia); //separa parrafos por medio de |
+                    <?php
+                    $parrafos = explode("|", $tem->historia); //separa parrafos por medio de |
 
-for ($i = 0; $i < count($parrafos); $i++) {
-    if ($i == 0) {
-        echo ' <p class="to-animate"><span class="firstcharacter">' .
-        substr($parrafos[$i], 0, 1) . '</span>' .
-        substr($parrafos[$i], 1) . '</p>';
-    } else {
-        echo '<p class="to-animate">' . $parrafos[$i] . '</p>';
-    }
-}
-?>
+                    for ($i = 0; $i < count($parrafos); $i++) {
+                        if ($i == 0) {
+                            echo ' <p class="to-animate"><span class="firstcharacter">' .
+                            substr($parrafos[$i], 0, 1) . '</span>' .
+                            substr($parrafos[$i], 1) . '</p>';
+                        } else {
+                            echo '<p class="to-animate">' . $parrafos[$i] . '</p>';
+                        }
+                    }
+                    ?>
 
 
                 </div>
                 <div class="fh5co-2col fh5co-text">
                     <h2 class="heading to-animate"><?php echo $quienesSomos; ?></h2>
-<?php
-$parrafos = explode("|", $tem->quinesSomos); //separa parrafos por medio de |
+                    <?php
+                    $parrafos = explode("|", $tem->quinesSomos); //separa parrafos por medio de |
 
-for ($i = 0; $i < count($parrafos); $i++) {
-    echo '<p class="to-animate">' . $parrafos[$i] . '</p>';
-}
-?>
+                    for ($i = 0; $i < count($parrafos); $i++) {
+                        echo '<p class="to-animate">' . $parrafos[$i] . '</p>';
+                    }
+                    ?>
 
 
                 </div>
@@ -420,7 +420,7 @@ for ($i = 0; $i < count($parrafos); $i++) {
                             <ul class="fh5co-contact-info">
                                 <li class="fh5co-contact-address ">
                                     <i class="icon-home"></i>
-<?php echo $tem->direccion; ?>
+                                    <?php echo $tem->direccion; ?>
                                 </li>
                                 <li><i class="icon-user"></i> <?php echo $tem->encargadoA; ?> <br> <?php echo $tem->encargadoB; ?></li>
                                 <li><i class="icon-phone"></i> (+506) <?php echo $tem->telefonoA; ?> <br> (+506) <?php echo $tem->telefonoB; ?></li>
@@ -438,16 +438,16 @@ for ($i = 0; $i < count($parrafos); $i++) {
                                     } else {
                                         echo 'Name';
                                     }
-?> "type="text" required>
+                                    ?> "type="text" required>
                                 </div>
                                 <div class="form-group ">
                                     <input id="email" class="form-control" placeholder="<?php
-                                           if ($idiomaTemp == true) {
-                                               echo 'Correo';
-                                           } else {
-                                               echo 'Email';
-                                           }
-                                           ?>" type="email" required>
+                                    if ($idiomaTemp == true) {
+                                        echo 'Correo';
+                                    } else {
+                                        echo 'Email';
+                                    }
+                                    ?>" type="email" required>
                                 </div>
 
                                 <div class="form-group ">
@@ -457,7 +457,7 @@ for ($i = 0; $i < count($parrafos); $i++) {
                                     } else {
                                         echo 'Message';
                                     }
-                                           ?>" required></textarea>
+                                    ?>" required></textarea>
                                 </div>
                                 <div class="form-group ">
                                     <input class="btn btn-primary" value="<?php echo $btnEnviarMensaje; ?>" type="submit">
@@ -509,31 +509,31 @@ for ($i = 0; $i < count($parrafos); $i++) {
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">
-<?php
-if ($idiomaTemp == true) {
-    echo 'Misión';
-} else {
-    echo 'Mission';
-}
-?>
+                            <?php
+                            if ($idiomaTemp == true) {
+                                echo 'Misión';
+                            } else {
+                                echo 'Mission';
+                            }
+                            ?>
                         </h4>
                     </div>
                     <div class="modal-body">
-                            <?php echo $tem->mision; ?>
+                        <?php echo $tem->mision; ?>
                     </div>
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">
-                        <?php
-                        if ($idiomaTemp == true) {
-                            echo 'Visión';
-                        } else {
-                            echo 'Vision';
-                        }
-                        ?>
+                            <?php
+                            if ($idiomaTemp == true) {
+                                echo 'Visión';
+                            } else {
+                                echo 'Vision';
+                            }
+                            ?>
                         </h4>
                     </div>
                     <div class="modal-body">
-                            <?php echo $tem->vision; ?>
+                        <?php echo $tem->vision; ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -665,7 +665,27 @@ if ($idiomaTemp == true) {
         </script>
         <!-- Main JS -->
         <script src="../../ClientResource/js/main.js"></script>
+        <script>
 
+                 (function ($) {
+                     $.get = function (key) {
+                         key = key.replace(/[\[]/, '\\[');
+                         key = key.replace(/[\]]/, '\\]');
+                         var pattern = "[\\?&]" + key + "=([^&#]*)";
+                         var regex = new RegExp(pattern);
+                         var url = unescape(window.location.href);
+                         var results = regex.exec(url);
+                         if (results === null) {
+                             return null;
+                         } else {
+                             return results[1];
+                         }
+                     }
+                 })(jQuery);
+
+                 var getee = $.get("msg");
+                 alert(getee);
+        </script>
     </body>
 </html>
 
