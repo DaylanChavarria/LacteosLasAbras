@@ -45,63 +45,68 @@ if (isset($_SESSION['user'])) {
                                 <div class="box-content">
 
                                     <div class="box-content">
-                                        <form enctype="multipart/form-data" method="POST" action="../../Business/Galeria/GaleriaInsertarAccion.php">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">Cargar Imagen</label>
-                                                <input name="archivo" type="file" id="exampleInputFile">
+                                        <!-- Mensaje de error o de realizado -->
+                                        <?php
+                                        $textError = "";
+                                        if (isset($_GET['msg'])) {
+                                            $textError = $_GET['msg'];
+                                            ?>
+                                            <div class="col-md-offset-1 col-md-10">
+                                                <?php
+                                                if (isset($_GET['result'])) {
+                                                    ?>
+                                                    <div class="alert alert-success text-center">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <div class="alert alert-danger text-center">
+                                                            <?php
+                                                        }
+                                                        ?>
 
-                                                <p class="help-block">Se recomienda subir imagenes con el tamaño: 1000 x 1000.</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <span for="exampleInputEmail1" class="badge">Informacion en Español</span>
-                                                   <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Español">-->
-                                                <br>
-                                                <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Descripción Español"></textarea>
+                                                        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                        <h4> <?php echo $textError; ?> </h4>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <form enctype="multipart/form-data" method="POST" action="../../Business/Galeria/GaleriaInsertarAccion.php">
+                                                <div class="form-group">
+                                                    <label for="exampleInputFile">Cargar Imagen</label>
+                                                    <input name="archivo" type="file" id="exampleInputFile">
 
-                                            </div>
-                                            <div class="form-group">
-                                                <span for="exampleInputEmail1" class="badge">Informacion en Inglés</span>
-                                                <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Inglés">-->
-                                                <br>
-                                                <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripción Inglés"></textarea>
-                                            </div>
+                                                    <p class="help-block">Se recomienda subir imagenes con el tamaño: 1000 x 1000.</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <span for="exampleInputEmail1" class="badge">Informacion en Español</span>
+                                                       <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Español">-->
+                                                    <br>
+                                                    <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Descripción Español"></textarea>
 
-                                            <button type="submit" class="btn btn-default">Agregar</button>
-                                        </form>
+                                                </div>
+                                                <div class="form-group">
+                                                    <span for="exampleInputEmail1" class="badge">Informacion en Inglés</span>
+                                                    <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titulo Inglés">-->
+                                                    <br>
+                                                    <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripción Inglés"></textarea>
+                                                </div>
+
+                                                <button type="submit" class="btn btn-default">Agregar</button>
+                                            </form>
+
+                                        </div>
+
 
                                     </div>
-
-
                                 </div>
                             </div>
+
                         </div>
 
                     </div>
-
                 </div>
+                <hr>
             </div>
-            <hr>
-        </div>
     </body>
-    <script>
-
-        (function ($) {
-            $.get = function (key) {
-                key = key.replace(/[\[]/, '\\[');
-                key = key.replace(/[\]]/, '\\]');
-                var pattern = "[\\?&]" + key + "=([^&#]*)";
-                var regex = new RegExp(pattern);
-                var url = unescape(window.location.href);
-                var results = regex.exec(url);
-                if (results === null) {
-                    return null;
-                } else {
-                    return results[1];
-                }
-            }
-        })(jQuery);
-
-        var getee = $.get("msg");
-        alert(getee);
-    </script>
 </html>

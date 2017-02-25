@@ -28,7 +28,7 @@ if (($resultValidaRecibidos == 1)) {
 
     //Se hace el llamado a la funcion que valida campos vacios.
     $resultValidaVacios = $instValidaciones->validaVacios(array($nombre, $precio, $descripcion,
-    $nombrein, $descripcionin, $codigo,));
+        $nombrein, $descripcionin, $codigo,));
 
     //Se hace el llamado a la funcion que valida campos numericos.	
     $resultValidaNumericos = $instValidaciones->validaNumericos(array($precio));
@@ -49,7 +49,7 @@ if (($resultValidaRecibidos == 1)) {
                 $ruta = "../../Presentation/Admin/img/productos/" . $_FILES['archivo']['name'];
                 if (!file_exists($ruta)) {
 
-                    unlink("../../Presentation/Admin/img/productos/". $imagen);
+                    unlink("../../Presentation/Admin/img/productos/" . $imagen);
                     $resultado = @move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta);
                     if ($resultado) {
                         $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $_FILES['archivo']['name']);
@@ -57,16 +57,16 @@ if (($resultValidaRecibidos == 1)) {
                         $instBusiness = new ProductoBusiness();
                         $instBusiness->actualizarProductosEsBusiness($productoEs);
                         $instBusiness->actualizarProductosInBusiness($productoIn);
-                 
-                        header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito");
+
+                        header("location: ../../Presentation/Admin/administrarProductos.php?result=success&msg=Inserción realizada con éxito.");
                     } else {
-                        header("location: ../../Presentation/Admin/administrarProductos.php?msg=No se ingreso");
+                        header("location: ../../Presentation/Admin/administrarProductos.php?msg=La imagen no pudo ser ingresada.");
                     }
                 } else {
-                    header("location: ../../Presentation/Admin/administrarProductos.php?msg=la imagen existe");
+                    header("location: ../../Presentation/Admin/administrarProductos.php?msg=No se permite el ingreso porque existe una imagen con el mismo nombre.");
                 }
             } else {
-                header("location: ../../Presentation/Admin/administrarProductos.php?msg=Archivo no permitido");
+                header("location: ../../Presentation/Admin/administrarProductos.php?msg=El formato del archivo no es permitido. Ingrese una imagen en formato jpg o png.");
             }
         } else {
             $productoEs = new Producto(0, $nombre, $precio, $descripcion, 0, $codigo, $imagen);
@@ -74,10 +74,10 @@ if (($resultValidaRecibidos == 1)) {
             $instBusiness = new ProductoBusiness();
             $instBusiness->actualizarProductosEsBusiness($productoEs);
             $instBusiness->actualizarProductosInBusiness($productoIn);
-            header("location: ../../Presentation/Admin/administrarProductos.php?msg=Inserción realizada con exito sin imagen");
+            header("location: ../../Presentation/Admin/administrarProductos.php?result=success&msg=Inserción realizada con éxito.");
         }
     }
 } else {
-    header("location: ../../Presentation/Admin/administrarProductos.php?msg=No se recibieron todos los datos esperados");
+    header("location: ../../Presentation/Admin/administrarProductos.php?msg=No se recibieron todos los datos esperados.");
 }
 ?>

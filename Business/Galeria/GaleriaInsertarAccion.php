@@ -31,18 +31,18 @@ if (($resultValidaRecibidos == 1) && $resultadoArchivo == 1) {
                     $galeriain = new Galeria(0, $_FILES['archivo']['name'], $descripcionin, 1, 0);
                     $instBusiness->ingresarGaleriaBusiness($galeria,$galeriain);
 
-                    header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=Inserción realizada con exito");
+                    header("location: ../../Presentation/Admin/imagenesGaleria.php?result=success&msg=Inserción realizada con éxito.");
                 } else {
-                    header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=No se ingreso");
+                    header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=La imagen no pudo ser ingresada.");
                 }
             } else {
-                header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=la imagen existe");
+                header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=No se permite el ingreso porque existe una imagen con el mismo nombre.");
             }
         } else {
-            header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=Archivo no permitido");
+            header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=El formato del archivo no es permitido. Ingrese una imagen en formato jpg o png.");
         }
     }
 } else {
-    header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=No se recibieron todos los datos esperados");
+    header("location: ../../Presentation/Admin/imagenesGaleria.php?msg=No se recibieron todos los datos esperados. Verifique que todos los campos estén llenos.");
 }
 ?>

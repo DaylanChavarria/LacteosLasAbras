@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
 <html lang="en">
     <head> 
         <meta charset="utf-8">
-        <title>Free HTML5 Bootstrap Admin Template</title>
+         <title>Lácteos las Abras</title>
     
         <?php
             include '../../Business/Empresa/EmpresaBusiness.php';
