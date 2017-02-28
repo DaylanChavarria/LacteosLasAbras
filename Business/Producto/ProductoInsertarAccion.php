@@ -35,7 +35,7 @@ if (($resultValidaRecibidos == 1) && ($resultadoArchivo == 1)) {
     if (!$resultValidaVacios) {
         header("location: ../../Presentation/Admin/ingresarProductos.php?msg=Todos los datos deben ser ingresados.");
     } elseif (!$resultValidaNumericos) {
-        header("location: ../../Presentation/Admin/ingresarProductos.php?msg=ERROR de formato, asegurese de ingresar solo numeros en los campos numericos.");
+        header("location: ../../Presentation/Admin/ingresarProductos.php?msg=Asegúrese de ingresar solo números en el campo de precio.");
     } else {
         $permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
         // validar extensiones
@@ -52,18 +52,18 @@ if (($resultValidaRecibidos == 1) && ($resultadoArchivo == 1)) {
                     // preguntar a tavo
                     $result = $instBusiness->insertProductoBusiness($productoEs, $productoIn);
 
-                    header("location: ../../Presentation/Admin/ingresarProductos.php?msg=Inserción realizada con exito");
+                    header("location: ../../Presentation/Admin/ingresarProductos.php?result=success&msg=Inserción realizada con éxito.");
                 } else {
-                    header("location: ../../Presentation/Admin/ingresarProductos.php?msg=No se ingreso");
+                    header("location: ../../Presentation/Admin/ingresarProductos.php?msg=La imagen no pudo ser ingresada.");
                 }
             } else {
-                header("location: ../../Presentation/Admin/ingresarProductos.php?msg=la imagen existe");
+                header("location: ../../Presentation/Admin/ingresarProductos.php?msg=No se permite el ingreso porque existe una imagen con el mismo nombre.");
             }
         } else {
-            header("location: ../../Presentation/Admin/ingresarProductos.php?msg=Archivo no permitido");
+            header("location: ../../Presentation/Admin/ingresarProductos.php?msg=El formato del archivo no es permitido. Ingrese una imagen en formato jpg o png.");
         }
     }
 } else {
-    header("location: ../../Presentation/Admin/ingresarProductos.php?msg=No se recibieron todos los datos esperados");
+    header("location: ../../Presentation/Admin/ingresarProductos.php?msg=No se recibieron todos los datos esperados. Verifique que todos los campos estén llenos.");
 }
 ?>

@@ -21,18 +21,18 @@ if ($resultadoArchivo == 1) {
                 //ID,RUTA,TIPO
                 $imagenInicio = new Inicio(0, $_FILES['archivo']['name'], 0);
                 $instBusiness->ingresarInicioBusiness($imagenInicio);
-                header("location: ../../Presentation/Admin/imagenesInicio.php?msg=Inserción realizada con exito");
+                header("location: ../../Presentation/Admin/imagenesInicio.php?result=success&msg=Inserción realizada con éxito.");
             } else {
-                header("location: ../../Presentation/Admin/imagenesInicio.php?msg=No se ingreso");
+                header("location: ../../Presentation/Admin/imagenesInicio.php?msg=No se pudo ingresar con éxito.");
             }
         } else {
-            header("location: ../../Presentation/Admin/imagenesInicio.php?msg=la imagen existe");
+            header("location: ../../Presentation/Admin/imagenesInicio.php?msg=No se permite el ingreso porque existe una imagen con el mismo nombre.");
         }
     } else {
-        header("location: ../../Presentation/Admin/imagenesInicio.php?msg=Archivo no permitido");
+        header("location: ../../Presentation/Admin/imagenesInicio.php?msg=El formato del archivo no es permitido. Ingrese una imagen en formato jpg o png.");
     }
 //    }
 } else {
-    header("location: ../../Presentation/Admin/imagenesInicio.php?msg=No se recibieron todos los datos esperados");
+    header("location: ../../Presentation/Admin/imagenesInicio.php?msg=No se recibieron todos los datos esperados.");
 }
 ?>

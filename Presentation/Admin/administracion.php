@@ -30,7 +30,7 @@ if (!isset($_SESSION)) {
                     </div>
                     <h1>Bienvenido Administrador</h1>   
                 </div>
-                <div id="content" class="col-lg-4 col-sm-4">
+<!--                <div id="content" class="col-lg-4 col-sm-4">
                     <?php
                     if (!isset($_SESSION['user'])) {
                         ?>
@@ -58,30 +58,9 @@ if (!isset($_SESSION)) {
                         <?php
                     }
                     ?>
-                </div>
+                </div>-->
             </div>
         </div>
 
     </body>
-    <script>
-
-        (function ($) {
-            $.get = function (key) {
-                key = key.replace(/[\[]/, '\\[');
-                key = key.replace(/[\]]/, '\\]');
-                var pattern = "[\\?&]" + key + "=([^&#]*)";
-                var regex = new RegExp(pattern);
-                var url = unescape(window.location.href);
-                var results = regex.exec(url);
-                if (results === null) {
-                    return null;
-                } else {
-                    return results[1];
-                }
-            }
-        })(jQuery);
-
-        var getee = $.get("msg");
-        alert(getee);
-    </script>
 </html>

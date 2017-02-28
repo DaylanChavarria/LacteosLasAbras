@@ -57,90 +57,95 @@ if (isset($_SESSION['user'])) {
                                 <div class="box-content">
 
                                     <div class="box-content">
-                                        <form action="../../Business/Inicio/InicioInsertarAccion.php" method="POST" enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">Cargar Imagen</label>
-                                                <input type="file" id="exampleInputFile" name="archivo">
-                                            </div>
-                                            <button type="submit" class="btn btn-default">Agregar</button>
-                                        </form>
-                                    </div>
-                                    <br>
-                                    <ul class="thumbnails gallery">
-
+                                        <!-- Mensaje de error o de realizado -->
                                         <?php
-                                        include '../../Business/Inicio/InicioBusiness.php';
-                                        $instBusiness = new InicioBusiness();
-                                        $resultado = $instBusiness->obtenerInicioBusiness();
-//                                        var_dump($resultado);
-                                        foreach ($resultado as $current) {
+                                        $textError = "";
+                                        if (isset($_GET['msg'])) {
+                                            $textError = $_GET['msg'];
                                             ?>
-                                            <li id="<?php echo $current->Id . '&' . $current->nombre .'&inicio' ?>"
-                                             class="thumbnail">
-                                                <a style="background:url(./img/inicio/<?php echo $current->nombre ?>)"
-                                                   title="Sample Image 1" href="./img/inicio/<?php echo $current->nombre ?>">
-                                                    <img 
-                                                        class="grayscale" src="./img/inicio/<?php echo $current->nombre ?>"
-                                                        alt="Sample Image 1">
-                                                </a>
-                                            </li>
+                                            <div class="col-md-offset-1 col-md-10">
+                                                <?php
+                                                if (isset($_GET['result'])) {
+                                                    ?>
+                                                    <div class="alert alert-success text-center">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <div class="alert alert-danger text-center">
+                                                            <?php
+                                                        }
+                                                        ?>
+
+                                                        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                        <h4> <?php echo $textError; ?> </h4>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <form action="../../Business/Inicio/InicioInsertarAccion.php" method="POST" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label for="exampleInputFile">Cargar Imagen</label>
+                                                    <input type="file" id="exampleInputFile" name="archivo">
+                                                </div>
+                                                <button type="submit" class="btn btn-default">Agregar</button>
+                                            </form>
+                                        </div>
+                                        <br>
+                                        <ul class="thumbnails gallery">
+
                                             <?php
-                                        }
-                                        //llama a todas para eliminar
-                                        ?>
-                                        
-                                    </ul>
+                                            include '../../Business/Inicio/InicioBusiness.php';
+                                            $instBusiness = new InicioBusiness();
+                                            $resultado = $instBusiness->obtenerInicioBusiness();
+//                                        var_dump($resultado);
+                                            foreach ($resultado as $current) {
+                                                ?>
+                                                <li id="<?php echo $current->Id . '&' . $current->nombre . '&inicio' ?>"
+                                                    class="thumbnail">
+                                                    <a style="background:url(./img/inicio/<?php echo $current->nombre ?>)"
+                                                       title="Sample Image 1" href="./img/inicio/<?php echo $current->nombre ?>">
+                                                        <img 
+                                                            class="grayscale" src="./img/inicio/<?php echo $current->nombre ?>"
+                                                            alt="Sample Image 1">
+                                                    </a>
+                                                </li>
+                                                <?php
+                                            }
+                                            //llama a todas para eliminar
+                                            ?>
+
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
 
                     </div>
-
                 </div>
-            </div>
-            <hr>
+                <hr>
 
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
 
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">×</button>
-                            <h3>Settings</h3>
-                        </div>
-                        <div class="modal-body">
-                            <p>Here settings can be configured...</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                            <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h3>Settings</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p>Here settings can be configured...</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                                <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
     </body>
-    <script>
-
-        (function ($) {
-            $.get = function (key) {
-                key = key.replace(/[\[]/, '\\[');
-                key = key.replace(/[\]]/, '\\]');
-                var pattern = "[\\?&]" + key + "=([^&#]*)";
-                var regex = new RegExp(pattern);
-                var url = unescape(window.location.href);
-                var results = regex.exec(url);
-                if (results === null) {
-                    return null;
-                } else {
-                    return results[1];
-                }
-            }
-        })(jQuery);
-
-        var getee = $.get("msg");
-        alert(getee);
-    </script>
 </html>

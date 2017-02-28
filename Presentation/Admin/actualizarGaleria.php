@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
 <html lang="en">
     <head> 
         <meta charset="utf-8">
-        <title>Free HTML5 Bootstrap Admin Template</title>
+         <title>Lácteos las Abras</title>
     </head>
     <body>
         <!-- topbar ends -->
@@ -33,6 +33,32 @@ if (isset($_SESSION['user'])) {
                     </div>
 
                     <div class="row">
+                         <!-- Mensaje de error o de realizado -->
+                        <?php
+                        $textError = "";
+                        if (isset($_GET['msg'])) {
+                            $textError = $_GET['msg'];
+                            ?>
+                            <div class="col-md-offset-1 col-md-10">
+                                <?php
+                                if (isset($_GET['result'])) {
+                                    ?>
+                                    <div class="alert alert-success text-center">
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <div class="alert alert-danger text-center">
+                                            <?php
+                                        }
+                                        ?>
+
+                                        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                        <h4> <?php echo $textError; ?> </h4>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
                         <?php
                         include '../../Business/Galeria/GaleriaBusiness.php';
                         $instBusiness = new GaleriaBusiness();
@@ -65,7 +91,7 @@ if (isset($_SESSION['user'])) {
                                                     <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index]->descripcion ?></textarea><br/>
                                                     <span class="badge">Inglés</span>
                                                     <!--<input type="text" class="form-control" placeholder="Titulo de la imagen" > <br/>-->
-                                                    <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index]->descripcion ?></textarea>
+                                                    <textarea name="descripcionin" class="form-control" id="exampleInputPassword1" placeholder="Descripcion de la imagen"><?php echo $resultado[$index+1]->descripcion ?></textarea>
                                                 </div>  
 
                                                 <div class="col-md-6">
@@ -82,42 +108,11 @@ if (isset($_SESSION['user'])) {
                             <?php
                         }
                         ?>
-
                     </div><!--/row-->
                     <!-- content ends -->
                 </div><!--/#content.col-md-0-->
             </div><!--/fluid-row-->
-
         </div>
-
-
         <hr>
-
-
-
-
     </body>
-
-
-    <script>
-
-        (function ($) {
-            $.get = function (key) {
-                key = key.replace(/[\[]/, '\\[');
-                key = key.replace(/[\]]/, '\\]');
-                var pattern = "[\\?&]" + key + "=([^&#]*)";
-                var regex = new RegExp(pattern);
-                var url = unescape(window.location.href);
-                var results = regex.exec(url);
-                if (results === null) {
-                    return null;
-                } else {
-                    return results[1];
-                }
-            }
-        })(jQuery);
-
-        var getee = $.get("msg");
-        alert(getee);
-    </script>
 </html>

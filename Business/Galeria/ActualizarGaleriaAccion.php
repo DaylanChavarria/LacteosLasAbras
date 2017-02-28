@@ -25,7 +25,7 @@ if (($resultValidaRecibidos == 1)) {
     if (!$resultValidaVacios) {
         header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=Todos los datos deben ser ingresados.");
     } elseif (!$resultValidaNumericos) {
-        header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=ERROR de formato, asegurese de ingresar solo numeros en los campos numericos.");
+        header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=Asegúrese de ingresar solo números en el campo de precio.");
     } else {
         $permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
 
@@ -53,15 +53,15 @@ if (($resultValidaRecibidos == 1)) {
                         $instBusiness->actualizarImagenInBusiness($productoIn);
 
 
-                        header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=Inserción realizada con exito");
+                        header("location: ../../Presentation/Admin/actualizarGaleria.php?result=success&msg=Actualización realizada con éxito.");
                     } else {
-                        header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=No se ingreso");
+                        header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=La imagen no pudo ser ingresada.");
                     }
                 } else {
-                    header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=la imagen existe");
+                    header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=No se permite el ingreso porque existe una imagen con el mismo nombre.");
                 }
             } else {
-                header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=Archivo no permitido");
+                header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=El formato del archivo no es permitido. Ingrese una imagen en formato jpg o png.");
             }
         } else {
 
@@ -71,10 +71,10 @@ if (($resultValidaRecibidos == 1)) {
             $instBusiness = new GaleriaBusiness();
             $instBusiness->actualizarImagenEsBusiness($productoEs);
             $instBusiness->actualizarImagenInBusiness($productoIn);
-            header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=Inserción realizada con exito sin imagen");
+            header("location: ../../Presentation/Admin/actualizarGaleria.php?result=success&msg=Actualización realizada con éxito.");
         }
     }
 } else {
-    header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=No se recibieron todos los datos esperados");
+    header("location: ../../Presentation/Admin/actualizarGaleria.php?msg=No se recibieron todos los datos esperados.");
 }
 ?>

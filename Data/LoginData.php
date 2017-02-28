@@ -6,7 +6,7 @@ include_once 'Data.php';
 class LoginData extends Data {
 
     public function isUser($id, $pass) {
-        if ($id === "abra" && $pass === "cadabra") {
+        if ($id === "123" && $pass === "123") {
             return "3";
         } else {
             return "1";

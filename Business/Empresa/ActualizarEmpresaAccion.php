@@ -50,7 +50,7 @@
 		if(!$resultValidaVacios){
 			redireccionarConResultado("Todos los datos deben ser ingresados.");
 		}elseif (!$resultValidaNumericos) {
-			redireccionarConResultado("ERROR de formato, asegurese de ingresar solo numeros en los campos numericos.");
+			redireccionarConResultado("ERROR de formato, asegurese de ingresar solo números en los campos numéricos.");
 		}else{
 			/*Si se recibieron todos los datos, ninguno esta vacio*/
 			$empresa = new Empresa($Id, $historia, $quienesSomos, $descripcionGaleria, $elaboracion, $descripcionProductA,
@@ -60,14 +60,14 @@
 			$instBusiness = new EmpresaBusiness();
 			if(isset($_GET['len']) && $_GET['len'] == 'es'){
 				$result = $instBusiness->actualizaEmpresaEsBusiness($empresa);
-				redireccionarConResultado("Actualizacion realizada con exito");
+				redireccionarConResultado("Actualización realizada con éxito.");
 			}else{
 				$result = $instBusiness->actualizaEmpresaInData($empresa);
-				redireccionarConResultado("Actualizacion realizada con exito");
+				redireccionarConResultado("Actualización realizada con éxito.");
 			}
 		}
 	}
-	else header("location: ../../Presentation/Admin/empresaEspanol.php?msg=No se recibieron todos los datos esperados");
+	else header("location: ../../Presentation/Admin/empresaEspanol.php?msg=No se recibieron todos los datos esperados.");
 
 
 	function redireccionarConResultado($respuesta){
