@@ -684,7 +684,7 @@
                  })(jQuery);
 
                  var getee = $.get("msg");
-                 alert(getee);
+                 //alert(getee);
         </script>
     </body>
 </html>

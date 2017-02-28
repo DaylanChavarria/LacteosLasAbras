@@ -219,6 +219,12 @@ function docReady() {
                 if(this.responseText.trim() == 'true'){               
                     /*Si se realizo la eliminacion en la BD, se elimina en la interfaz*/
                     eliminado = true;
+
+                    if(tabla == 'inicio'){
+                        location.href = "./imagenesinicio.php?result=success&msg=Realizado con éxito";
+                    } else{
+                        location.href = "./eliminarImagenesGaleria.php?result=success&msg=Realizado con éxito.";
+                    }
                     
                 }
             }
@@ -229,7 +235,6 @@ function docReady() {
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             xhttp.send("id="+ idAction + "&srcImage="+ srcImage);
-
         }
         else{
             xhttp.open("POST", "../../Business/Galeria/EliminarGaleriaAccion.php", true);
@@ -242,11 +247,11 @@ function docReady() {
         * Fin de consulta por ajax
         */
 
-        if(eliminado = true){
+       /* if(eliminado = true){
             e.preventDefault();
             $(this).parents('.thumbnail').fadeOut();
         }
-
+*/
     });
     
     //gallery edit
