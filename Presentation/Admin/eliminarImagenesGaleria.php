@@ -46,6 +46,33 @@ if (isset($_SESSION['user'])) {
                         </ul>
                     </div>
 
+                    <!-- Mensaje de error o de realizado -->
+                                        <?php
+                                        $textError = "";
+                                        if (isset($_GET['msg'])) {
+                                            $textError = $_GET['msg'];
+                                            ?>
+                                            <div class="col-md-offset-1 col-md-10">
+                                                <?php
+                                                if (isset($_GET['result'])) {
+                                                    ?>
+                                                    <div class="alert alert-success text-center">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <div class="alert alert-danger text-center">
+                                                            <?php
+                                                        }
+                                                        ?>
+
+                                                        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                        <h4> <?php echo $textError; ?> </h4>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+
                     <div class="row">
                         <div class="box col-md-12">
                             <div class="box-inner">

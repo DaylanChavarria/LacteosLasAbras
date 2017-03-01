@@ -1,5 +1,5 @@
 <?php
-	include 'GaleriaBusiness.php';
+	include_once 'GaleriaBusiness.php';
 
 	$instGaleriaBusiness = new GaleriaBusiness();
 

@@ -1,7 +1,7 @@
 <?php
 
-include '../../Domain/Galeria.php';
-include 'Data.php';
+include_once '../../Domain/Galeria.php';
+include_once 'Data.php';
 
 /**
  * Clase encargada de realizar las consultas en la Base de Datos relacionadas a Productos 
@@ -38,6 +38,14 @@ class GaleriaData extends Data {
 
     function obtenerImagenesGaleriaData() {
         return $this->obtenerImagenesData(-1);
+    }
+
+    function obtenerImagenesGaleriaESData() {
+        return $this->obtenerImagenesData(0);
+    }
+
+    function obtenerImagenesGaleriaENData() {
+        return $this->obtenerImagenesData(1);
     }
 
     //Obtener

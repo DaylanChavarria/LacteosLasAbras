@@ -6,7 +6,7 @@
  * @author Daylan Chavarria
  */
 //include 'Data.php';
-include '../../Domain/Titulos.php';
+include_once '../../Domain/Titulos.php';
 
 class TitulosData extends Data {
     /* Métodos para llamar datos en ingles o español 

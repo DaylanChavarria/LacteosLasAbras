@@ -59,6 +59,43 @@
 
 	</head>
 	<body>
+
+	<?php 
+		include_once '../../Business/Empresa/EmpresaBusiness.php';
+		include_once '../../Business/Titulos/TitulosBusiness.php';
+		include_once '../../Business/Producto/ProductoBusiness.php';
+
+
+		$tituloBusiness = new TitulosBusiness();
+        $instEmpresaBusiness = new EmpresaBusiness();
+        $productosBusiness = new ProductoBusiness();
+
+		if ($_GET['lang'] == "es") {
+
+			$simbolo = "₡";
+            $titulos = $tituloBusiness->obtenerTitulosEsBusiness();
+            $quesos = $titulos[14]->getNombre();
+
+            $tem = $instEmpresaBusiness->getEmpresaEsBusiness();
+
+            $productos = $productosBusiness->obtenerProductosEsBusiness();
+
+
+
+		}else{
+
+			$simbolo = "$";
+			$titulos = $tituloBusiness->obtenerTitulosInBusiness();
+            $quesos = $titulos[14]->getNombre();
+
+             $tem = $instEmpresaBusiness->getEmpresaInBusiness();
+
+             $productos = $productosBusiness->obtenerProductosInBusiness();
+		}
+
+
+
+	?>
 		
 	<div class="gtco-loader"></div>
 	
@@ -66,7 +103,7 @@
 
 	
 	<!-- <div class="page-inner"> -->
-	<nav class="gtco-nav" role="navigation" >
+	<nav class="gtco-nav" role="navigation">
 		<div class="gtco-container">
 			
 			<div class="row">
@@ -84,99 +121,55 @@
 
 	
 	
-	<div class="gtco-section" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+	<div class="gtco-section" style="background-image: url(images/img_bg_1.jpg); margin-top: 70px;" data-stellar-background-ratio="0.5">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2 class="cursive-font primary-color">Quesos y Otros Productos</h2>
-					<p>En esta parte la idea es que sea dinámico por parametros se le envía si es de quesos o de otro producto para ser cargados</p>
+					<h2 class="cursive-font primary-color"><?php echo $quesos; ?></h2>
+					<p><?php echo $tem->descripcionProductoA; ?></p>
 				</div>
 			</div>
 			<div class="row">
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="./presentacion/images/quesos/queso1.png" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="./presentacion/images/quesos/queso1.png" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Queso Maduro con chile picante</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">¢19.15</span></p>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="./presentacion/images/quesos/queso4.png" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="./presentacion/images/quesos/queso4.png" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Queso Mozzarella</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">¢20.99</span></p>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="./presentacion/images/quesos/queso5.png" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="./presentacion/images/quesos/queso5.png" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Queso Palmito</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">¢8.99</span></p>
-
-						</div>
-					</a>
-				</div>
 
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="./presentacion/images/quesos/queso6.png" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="./presentacion/images/quesos/queso6.png" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Queso Turrialba</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">¢12.99</span></p>
-						</div>
-					</a>
-				</div>
+				<?php  
+					
+					foreach ($productos as $currentProductos) {		
+				?>
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="./presentacion/images/quesos/queso7.png" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="./presentacion/images/quesos/queso7.png" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Queso semiduro para freir</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">¢23.10</span></p>
-						</div>
-					</a>
-				</div>
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<a href="../Admin/img/productos/<?php echo $currentProductos->nombreImagen ?>" class="fh5co-card-item image-popup">
+							<figure>
+								<div class="overlay"><i class="ti-plus"></i></div>
+								<img src="../Admin/img/productos/<?php echo $currentProductos->nombreImagen ?>" alt="Image" class="img-responsive">
+							</figure>
+							<div class="fh5co-text">
+								<h2><?php echo $currentProductos->nombre ; ?></h2>
+								<p><?php echo $currentProductos->descripcion ; ?></p>
+								<?php 
+									if ($currentProductos->precio > 0) {
+										if ($_GET['lang'] == "es") {
+								?>
+											<p><span class="price cursive-font"><?php echo "₡" .$currentProductos->precio . " kg"; ?></span></p>
+								<?php 
+										}else{
+								?>
+											<p><span class="price cursive-font"><?php echo "$" .$currentProductos->precio . " kg"; ?></span></p>
+								<?php 
+										}
+									}
+								?>
+								
+							</div>
+						</a>
+					</div>
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="./presentacion/images/quesos/queso8.png" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="./presentacion/images/quesos/queso8.png" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Quesos Variados</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">¢5.59</span></p>
-						</div>
-					</a>
-				</div>
+				<?php  
+					}
+				?>
+
+				
 
 			</div>
 		</div>

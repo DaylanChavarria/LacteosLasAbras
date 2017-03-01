@@ -1,7 +1,7 @@
 <?php
 
-include './GaleriaBusiness.php';
-include '../Validaciones.php';
+include_once './GaleriaBusiness.php';
+include_once '../Validaciones.php';
 
 $instValidaciones = new Validaciones();
 $resultValidaRecibidos = $instValidaciones->validaRecibidos(

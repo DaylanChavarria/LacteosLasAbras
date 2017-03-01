@@ -1,7 +1,7 @@
 <?php
 
-include '../../Domain/Producto.php';
-include 'Data.php';
+include_once '../../Domain/Producto.php';
+include_once 'Data.php';
 
 /**
  * Clase encargada de realizar las consultas en la Base de Datos relacionadas a Productos 

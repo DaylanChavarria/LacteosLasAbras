@@ -1,6 +1,6 @@
 <?php
 
-include '../../Data/GaleriaData.php';
+include_once '../../Data/GaleriaData.php';
 
 /**
  * Clase encargada de conectar la capa de presentacion con la capa de
@@ -23,6 +23,12 @@ class GaleriaBusiness extends GaleriaData {
 
     function obtenerImagenesGaleriaBusiness() {
         return $this->obtenerImagenesGaleriaData();
+    }
+    function obtenerImagenesGaleriaESBusiness() {
+        return $this->obtenerImagenesGaleriaESData();
+    }
+    function obtenerImagenesGaleriaENBusiness() {
+        return $this->obtenerImagenesGaleriaENData();
     }
 
     function actualizarImagenEsBusiness($producto) {
