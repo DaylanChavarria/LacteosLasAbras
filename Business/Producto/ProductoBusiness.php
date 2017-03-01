@@ -1,5 +1,5 @@
 <?php 
-include '../../Data/ProductoData.php';
+include_once '../../Data/ProductoData.php';
 
 /**
 * Clase encargada de conectar la capa de presentacion con la capa de

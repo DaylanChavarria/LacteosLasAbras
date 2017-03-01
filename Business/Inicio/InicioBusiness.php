@@ -1,6 +1,6 @@
 <?php
 
-include '../../Data/InicioData.php';
+include_once '../../Data/InicioData.php';
 
 /**
  * Clase encargada de conectar la capa de presentacion con la capa de

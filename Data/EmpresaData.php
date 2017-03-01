@@ -1,6 +1,6 @@
 <?php
-	include 'Data.php';
-	include '../../Domain/Empresa.php';
+	include_once 'Data.php';
+	include_once '../../Domain/Empresa.php';
 
 	/*
 	* Clase destinada a consultas en la Base de Datos 

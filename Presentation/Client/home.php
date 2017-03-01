@@ -52,6 +52,8 @@
         <?php
         include '../../Business/Empresa/EmpresaBusiness.php';
         include '../../Business/Titulos/TitulosBusiness.php';
+        include '../../Business/Inicio/InicioBusiness.php';
+        include '../../Business/Galeria/GaleriaBusiness.php';
         ?>
     </head>
     <body>
@@ -175,10 +177,20 @@
                         </div>
                     </div>
                     <ul class="slides">
-                        <li style="background-image: url(../../ClientResource/images/turrialba.jpg);" data-stellar-background-ratio="0.5"></li>
-                        <li style="background-image: url(../../ClientResource/images/img1.jpeg);" data-stellar-background-ratio="0.5"></li>
-                        <li style="background-image: url(../../ClientResource/images/img3.jpeg);" data-stellar-background-ratio="0.5"></li>
-                        <li style="background-image: url(../../ClientResource/images/img2.jpeg);" data-stellar-background-ratio="0.5"></li>
+
+
+                           <?php
+                            $instBusiness = new InicioBusiness();
+                            $resultado = $instBusiness->obtenerInicioBusiness();
+
+                            foreach ($resultado as $current) {
+                            ?>
+                                <li style="background-image: url(../Admin/img/inicio/<?php echo $current->nombre ?>);" data-stellar-background-ratio="0.5"></li>
+                                
+                            <?php
+                            }
+                            ?>
+                        
 
                     </ul>
 
@@ -267,23 +279,40 @@
                                             <div class="carousel slide" id="myCarousel">
                                                 <!-- Carousel items -->
                                                 <div class="carousel-inner" >
-                                                    <div class="active item"  data-slide-number="0">
-                                                        <img src="./presentacion/images/galeria/gal7.png"></div>
 
-                                                    <div class="item" data-slide-number="1">
-                                                        <img src="./presentacion/images/galeria/gal7.png"></div>
 
-                                                    <div class="item" data-slide-number="2">
-                                                        <img src="./presentacion/images/galeria/gal3.png"></div>
+                                                    <?php  
+                                                        $galeriaBusiness = new GaleriaBusiness();
+                                                        $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
+                                                        $conta = 0;
 
-                                                    <div class="item" data-slide-number="3">
-                                                        <img src="./presentacion/images/galeria/gal4.png"></div>
+                                                        foreach ($imagenesGaleria as $currentGaleria) {
+                                                            if ($conta == 0) {
+                                                               
+                                                            
+                                                     ?>  
+                                                            
+                                                        <div class="active item" <?php echo "data-slide-number='" . $conta ."'"; ?>>
+                                                            <img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>">
+                                                           
+                                                        </div>
+                                                     <?php  
+                                                        }else{
 
-                                                    <div class="item" data-slide-number="4">
-                                                        <img src="./presentacion/images/galeria/gal5.png"></div>
+                                                    ?> 
 
-                                                    <div class="item" data-slide-number="5">
-                                                        <img src="./presentacion/images/galeria/gal6.png"></div>
+                                                    <div class="item" <?php echo "data-slide-number='" . $conta ."'"; ?>>
+                                                            <img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>">
+                                                           
+                                                        </div>
+
+                                                    <?php  
+                                                        }
+                                                        $conta = $conta + 1;    
+                                                        }
+                                                    ?> 
+                                                    
+                                                    
 
 
                                                 </div><!-- Carousel nav -->
@@ -298,42 +327,42 @@
 
                                         <div class="col-sm-6" id="carousel-text"></div>
 
+
+
+                                        
+
+                                                    
+
                                         <div id="slide-content" style="display: none;">
-                                            <div id="slide-content-0">
-                                                <h2>Slider One</h2>
-                                                <p>Lorem Ipsum Dolor</p>
-                                                <p class="sub-text">October 24 2014 - <a href="#">Read more</a></p>
-                                            </div>
 
-                                            <div id="slide-content-1">
-                                                <h2>Slider Two</h2>
-                                                <p>Lorem Ipsum Dolor</p>
-                                                <p class="sub-text">October 24 2014 - <a href="#">Read more</a></p>
-                                            </div>
 
-                                            <div id="slide-content-2">
-                                                <h2>Slider Three</h2>
-                                                <p>Lorem Ipsum Dolor</p>
-                                                <p class="sub-text">October 24 2014 - <a href="#">Read more</a></p>
-                                            </div>
+                                            <?php  
 
-                                            <div id="slide-content-3">
-                                                <h2>Slider Four</h2>
-                                                <p>Lorem Ipsum Dolor</p>
-                                                <p class="sub-text">October 24 2014 - <a href="#">Read more</a></p>
-                                            </div>
+                                            if ($idiomaTemp == true) {
+                                                $galeriaBusiness = new GaleriaBusiness();
+                                                $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaESBusiness();
+                                            }else{
+                                                $galeriaBusiness = new GaleriaBusiness();
+                                                $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
+                                            }
 
-                                            <div id="slide-content-4">
-                                                <h2>Slider Five</h2>
-                                                <p>Lorem Ipsum Dolor</p>
-                                                <p class="sub-text">October 24 2014 - <a href="#">Read more</a></p>
-                                            </div>
+                                            
+                                            $conta = 0;
 
-                                            <div id="slide-content-5">
-                                                <h2>Slider Six</h2>
-                                                <p>Lorem Ipsum Dolor</p>
-                                                <p class="sub-text">October 24 2014 - <a href="#">Read more</a></p>
+                                            foreach ($imagenesGaleria as $currentGaleria) {
+               
+                                            ?>  
+                                                            
+                                            <div <?php echo "id='slide-content-" .$conta."'"; ?> >
+                                                
+                                                <p><?php echo $currentGaleria->descripcion; ?></p>
+                                                
                                             </div>
+                                            <?php  
+                                                $conta = $conta + 1;
+                                                }
+                                            ?> 
+                                            
 
 
                                         </div>
@@ -344,29 +373,27 @@
                             <div class="row hidden-xs" id="slider-thumbs">
                                 <!-- Bottom switcher of slider -->
                                 <ul class="hide-bullets">
-                                    <li class="col-sm-2">
-                                        <a class="thumbnail" id="carousel-selector-0"><img src="./presentacion/images/galeria/gal7.png"></a>
-                                    </li>
 
-                                    <li class="col-sm-2">
-                                        <a class="thumbnail" id="carousel-selector-1"><img src="./presentacion/images/galeria/gal2.png"></a>
-                                    </li>
+                                    <?php  
+                                            $galeriaBusiness = new GaleriaBusiness();
+                                            $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
+                                            $conta = 0;
 
-                                    <li class="col-sm-2">
-                                        <a class="thumbnail" id="carousel-selector-2"><img src="./presentacion/images/galeria/gal3.png"></a>
-                                    </li>
+                                            foreach ($imagenesGaleria as $currentGaleria) {
+               
+                                            ?>  
+                                                            
+                                                <li class="col-sm-2">
+                                                    <a class="thumbnail" <?php echo "id='carousel-selector-" .$conta."'"; ?>><img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>"></a>
+                                                </li>
 
-                                    <li class="col-sm-2">
-                                        <a class="thumbnail" id="carousel-selector-3"><img src="./presentacion/images/galeria/gal4.png"></a>
-                                    </li>
+                                            <?php  
+                                                $conta = $conta + 1;
+                                                }
+                                            ?> 
+                                            
 
-                                    <li class="col-sm-2">
-                                        <a class="thumbnail" id="carousel-selector-4"><img src="./presentacion/images/galeria/gal5.png"></a>
-                                    </li>
-
-                                    <li class="col-sm-2">
-                                        <a class="thumbnail" id="carousel-selector-5"><img src="./presentacion/images/galeria/gal6.png"></a>
-                                    </li>
+                                 
 
 
                                 </ul>                 
@@ -391,7 +418,7 @@
                                 <h3><?php echo $quesos; ?></h3>
                                 <span class="fh5co-event-meta"></span>
                                 <p><?php echo $tem->descripcionProductoA; ?></p>
-                                <p><a href="productos.php" class="btn btn-primary btn-outline"><?php echo $btnVerProductos; ?></a></p>
+                                <p><a href="productos.php?lang=<?php if($idiomaTemp == 1){echo "es";}else{echo "en";} ?>" class="btn btn-primary btn-outline"><?php echo $btnVerProductos; ?></a></p>
                             </div>
                         </div>
                         <div class="col-md-6">
