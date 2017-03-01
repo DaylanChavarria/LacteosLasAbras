@@ -391,11 +391,6 @@
                                                 $conta = $conta + 1;
                                                 }
                                             ?> 
-                                            
-
-                                 
-
-
                                 </ul>                 
                             </div>
                         </div>
