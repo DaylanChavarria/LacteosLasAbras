@@ -583,7 +583,7 @@
                         <h4 class="modal-title" id="modalSesion">Iniciar Sesión</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" target="_blank">
+                        <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php">
                             <div class="form-group">
                                 <!--<label for="inputEmail3" class="col-sm-2 control-label">Correo</label>-->
                                 <div class="col-sm-12">
