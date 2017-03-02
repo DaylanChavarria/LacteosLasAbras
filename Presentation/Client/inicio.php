@@ -218,7 +218,7 @@
                             <a data-toggle="modal" href="#myModalLanguaje">     
                                 <?php echo $btnIdiomas; ?>
                             </a>                         
-                            <a data-toggle="modal" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión"></a>
+                            <a data-toggle="modal" id="session" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión"></a>
 
                         </div>
                     </div>
@@ -593,7 +593,7 @@
                             <div class="form-group">
                                 <!--<label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>-->
                                 <div class="col-sm-12">
-                                    <input name="password" type="passwordb" class="form-control" id="inputPassword3" placeholder="Contraseña" required>
+                                    <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="Contraseña" required>
                                 </div>
                             </div>
                             <!--                            <div class="form-group">
@@ -681,6 +681,23 @@
         </script>
         <!-- Main JS -->
         <script src="../../ClientResource/js/main.js"></script>
+
+        <script>
+            window.onload = function()
+            { 
+                // capturamos la url
+                var loc = document.location.href;
+                // si existe el interrogante
+                if(loc.indexOf('?')>0)
+                {
+                    var objO = document.getElementById("session");
+                    objO.click();  
+                    history.pushState(null, "", loc.split("?")[0]);
+                }
+            }
+        </script>
+
+
     </body>
 </html>
 
