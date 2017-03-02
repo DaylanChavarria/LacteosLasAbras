@@ -179,18 +179,18 @@
                     <ul class="slides">
 
 
-                           <?php
-                            $instBusiness = new InicioBusiness();
-                            $resultado = $instBusiness->obtenerInicioBusiness();
+                        <?php
+                        $instBusiness = new InicioBusiness();
+                        $resultado = $instBusiness->obtenerInicioBusiness();
 
-                            foreach ($resultado as $current) {
+                        foreach ($resultado as $current) {
                             ?>
-                                <li style="background-image: url(../Admin/img/inicio/<?php echo $current->nombre ?>);" data-stellar-background-ratio="0.5"></li>
-                                
+                            <li style="background-image: url(../Admin/img/inicio/<?php echo $current->nombre ?>);" data-stellar-background-ratio="0.5"></li>
+
                             <?php
-                            }
-                            ?>
-                        
+                        }
+                        ?>
+
 
                     </ul>
 
@@ -281,38 +281,35 @@
                                                 <div class="carousel-inner" >
 
 
-                                                    <?php  
-                                                        $galeriaBusiness = new GaleriaBusiness();
-                                                        $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
-                                                        $conta = 0;
+                                                    <?php
+                                                    $galeriaBusiness = new GaleriaBusiness();
+                                                    $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
+                                                    $conta = 0;
 
-                                                        foreach ($imagenesGaleria as $currentGaleria) {
-                                                            if ($conta == 0) {
-                                                               
-                                                            
-                                                     ?>  
-                                                            
-                                                        <div class="active item" <?php echo "data-slide-number='" . $conta ."'"; ?>>
-                                                            <img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>">
-                                                           
-                                                        </div>
-                                                     <?php  
-                                                        }else{
+                                                    foreach ($imagenesGaleria as $currentGaleria) {
+                                                        if ($conta == 0) {
+                                                            ?>  
 
+                                                            <div class="active item" <?php echo "data-slide-number='" . $conta . "'"; ?>>
+                                                                <img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>">
+
+                                                            </div>
+                                                            <?php
+                                                        } else {
+                                                            ?> 
+
+                                                            <div class="item" <?php echo "data-slide-number='" . $conta . "'"; ?>>
+                                                                <img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>">
+
+                                                            </div>
+
+                                                            <?php
+                                                        }
+                                                        $conta = $conta + 1;
+                                                    }
                                                     ?> 
 
-                                                    <div class="item" <?php echo "data-slide-number='" . $conta ."'"; ?>>
-                                                            <img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>">
-                                                           
-                                                        </div>
 
-                                                    <?php  
-                                                        }
-                                                        $conta = $conta + 1;    
-                                                        }
-                                                    ?> 
-                                                    
-                                                    
 
 
                                                 </div><!-- Carousel nav -->
@@ -329,40 +326,38 @@
 
 
 
-                                        
 
-                                                    
+
+
 
                                         <div id="slide-content" style="display: none;">
 
 
-                                            <?php  
-
+                                            <?php
                                             if ($idiomaTemp == true) {
                                                 $galeriaBusiness = new GaleriaBusiness();
                                                 $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaESBusiness();
-                                            }else{
+                                            } else {
                                                 $galeriaBusiness = new GaleriaBusiness();
                                                 $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
                                             }
 
-                                            
+
                                             $conta = 0;
 
                                             foreach ($imagenesGaleria as $currentGaleria) {
-               
-                                            ?>  
-                                                            
-                                            <div <?php echo "id='slide-content-" .$conta."'"; ?> >
-                                                
-                                                <p><?php echo $currentGaleria->descripcion; ?></p>
-                                                
-                                            </div>
-                                            <?php  
+                                                ?>  
+
+                                                <div <?php echo "id='slide-content-" . $conta . "'"; ?> >
+
+                                                    <p><?php echo $currentGaleria->descripcion; ?></p>
+
+                                                </div>
+                                                <?php
                                                 $conta = $conta + 1;
-                                                }
+                                            }
                                             ?> 
-                                            
+
 
 
                                         </div>
@@ -374,23 +369,22 @@
                                 <!-- Bottom switcher of slider -->
                                 <ul class="hide-bullets">
 
-                                    <?php  
-                                            $galeriaBusiness = new GaleriaBusiness();
-                                            $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
-                                            $conta = 0;
+                                    <?php
+                                    $galeriaBusiness = new GaleriaBusiness();
+                                    $imagenesGaleria = $galeriaBusiness->obtenerImagenesGaleriaENBusiness();
+                                    $conta = 0;
 
-                                            foreach ($imagenesGaleria as $currentGaleria) {
-               
-                                            ?>  
-                                                            
-                                                <li class="col-sm-2">
-                                                    <a class="thumbnail" <?php echo "id='carousel-selector-" .$conta."'"; ?>><img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>"></a>
-                                                </li>
+                                    foreach ($imagenesGaleria as $currentGaleria) {
+                                        ?>  
 
-                                            <?php  
-                                                $conta = $conta + 1;
-                                                }
-                                            ?> 
+                                        <li class="col-sm-2">
+                                            <a class="thumbnail" <?php echo "id='carousel-selector-" . $conta . "'"; ?>><img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>"></a>
+                                        </li>
+
+                                        <?php
+                                        $conta = $conta + 1;
+                                    }
+                                    ?> 
                                 </ul>                 
                             </div>
                         </div>
@@ -413,7 +407,13 @@
                                 <h3><?php echo $quesos; ?></h3>
                                 <span class="fh5co-event-meta"></span>
                                 <p><?php echo $tem->descripcionProductoA; ?></p>
-                                <p><a href="productos.php?lang=<?php if($idiomaTemp == 1){echo "es";}else{echo "en";} ?>" class="btn btn-primary btn-outline"><?php echo $btnVerProductos; ?></a></p>
+                                <p><a href="productos.php?lang=<?php
+                                    if ($idiomaTemp == 1) {
+                                        echo "es";
+                                    } else {
+                                        echo "en";
+                                    }
+                                    ?>" class="btn btn-primary btn-outline"><?php echo $btnVerProductos; ?></a></p>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -442,7 +442,7 @@
                             <ul class="fh5co-contact-info">
                                 <li class="fh5co-contact-address ">
                                     <i class="icon-home"></i>
-                                    <?php echo $tem->direccion; ?>
+<?php echo $tem->direccion; ?>
                                 </li>
                                 <li><i class="icon-user"></i> <?php echo $tem->encargadoA; ?> <br> <?php echo $tem->encargadoB; ?></li>
                                 <li><i class="icon-phone"></i> (+506) <?php echo $tem->telefonoA; ?> <br> (+506) <?php echo $tem->telefonoB; ?></li>
@@ -507,16 +507,10 @@
             <div class="container">
                 <div class="row row-padded">
                     <div class="col-md-12 text-center">
-                        <p class="to-animate">&copy; 2017 Lacteos las Abras. <br> Designed by <a href="http://freehtml5.co/" target="_blank">TCU 563 Universidad de Costa Rica Sede del Atlántico.</a> 
+                        <p class="to-animate">&copy; 2017 Lacteos las Abras. <br> Designed by <a href="https://www.facebook.com/TCU-563-162821603904270" target="_blank">TCU 563 Universidad de Costa Rica Sede del Atlántico.</a> 
                         </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
                         <ul class="fh5co-social">
                             <li class="to-animate-2"><a href="https://www.facebook.com/queseradLayo/?ref=ts&fref=ts" target="_blank"><i class="icon-facebook"></i></a></li>
-                            <li class="to-animate-2"><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li class="to-animate-2"><a href="#"><i class="icon-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -541,7 +535,7 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <?php echo $tem->mision; ?>
+<?php echo $tem->mision; ?>
                     </div>
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">
@@ -555,7 +549,7 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <?php echo $tem->vision; ?>
+<?php echo $tem->vision; ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -591,36 +585,36 @@
                     <div class="modal-body">
                         <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" target="_blank">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
-                                <div class="col-sm-10">
-                                    <input name="email" type="emailb" class="form-control" id="inputEmail3" placeholder="Email" required>
+                                <!--<label for="inputEmail3" class="col-sm-2 control-label">Correo</label>-->
+                                <div class="col-sm-12">
+                                    <input name="email" type="emailb" class="form-control" id="inputEmail3" placeholder="Correo electrónico" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
-                                <div class="col-sm-10">
-                                    <input name="password" type="passwordb" class="form-control" id="inputPassword3" placeholder="Password" required>
+                                <!--<label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>-->
+                                <div class="col-sm-12">
+                                    <input name="password" type="passwordb" class="form-control" id="inputPassword3" placeholder="Contraseña" required>
                                 </div>
                             </div>
+                            <!--                            <div class="form-group">
+                                                            <div class="col-sm-offset-2 col-sm-10">
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox"> Recordarme
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Recordarme
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Ingresar</button>
+                                <div class="col-sm-offset-4 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Ingresar</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                    </div>
+                    <!--                    <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                        </div>-->
                 </div>
             </div>
         </div>
@@ -687,27 +681,6 @@
         </script>
         <!-- Main JS -->
         <script src="../../ClientResource/js/main.js"></script>
-        <script>
-
-                 (function ($) {
-                     $.get = function (key) {
-                         key = key.replace(/[\[]/, '\\[');
-                         key = key.replace(/[\]]/, '\\]');
-                         var pattern = "[\\?&]" + key + "=([^&#]*)";
-                         var regex = new RegExp(pattern);
-                         var url = unescape(window.location.href);
-                         var results = regex.exec(url);
-                         if (results === null) {
-                             return null;
-                         } else {
-                             return results[1];
-                         }
-                     }
-                 })(jQuery);
-
-                 var getee = $.get("msg");
-                 //alert(getee);
-        </script>
     </body>
 </html>
 
