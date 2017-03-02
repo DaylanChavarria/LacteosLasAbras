@@ -70,7 +70,7 @@
         <!-- theme selector ends -->
 
         <ul class="collapse navbar-collapse nav navbar-nav top-menu">
-            <li><a href="../Client/home.php" target="_blank"><i class="glyphicon glyphicon-globe"></i> Ver Página </a></li>
+            <li><a href="../Client/inicio.php" target="_blank"><i class="glyphicon glyphicon-globe"></i> Ver Página </a></li>
         </ul>
 
     </div>
