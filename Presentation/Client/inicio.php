@@ -688,7 +688,7 @@
                 // capturamos la url
                 var loc = document.location.href;
                 // si existe el interrogante
-                if(loc.indexOf('?')>0)
+                if(loc.indexOf('?')>0 && loc.indexOf('errorLogIn') > 0)
                 {
                     var objO = document.getElementById("session");
                     objO.click();  
