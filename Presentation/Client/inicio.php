@@ -263,7 +263,7 @@
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-8 col-md-offset-2">
                             <h2 class="heading to-animate"><?php echo $galeria; ?></h2>
-                            <p class="sub-heading to-animate"> <?php echo $tem->descripcionGaleria ?></p>
+                            <p class="sub-heading to-animate" style="text-align: justify;"> <?php echo $tem->descripcionGaleria ?></p>
                         </div>
                     </div>
 
@@ -432,7 +432,7 @@
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-8 col-md-offset-2">
                             <h2 class="heading to-animate"><?php echo $contactenos; ?></h2>
-                            <p class="sub-heading to-animate"><?php echo $tem->descripcionContactos; ?></p>
+                            <p class="sub-heading to-animate" style="text-align: justify;"><?php echo $tem->descripcionContactos; ?></p>
                         </div>
                     </div>
                     <div class="row">
