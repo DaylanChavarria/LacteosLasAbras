@@ -12,12 +12,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $_SESSION['pass'] = $password;
             header("location: ../../Presentation/Admin/administracion.php?msg=Ingresado con exito");
         } else {
-            header("location: ../../Presentation/Client/home.php?msg=no es usuario");
+            header("location: ../../Presentation/Client/inicio.php?errorLogIn=no es usuario");
         }
     } else {
-        header("location: ../../Presentation/Admin/administracion.php?msg=campos vacios");
+        header("location: ../../Presentation/Admin/inicio.php?errorLogIn=campos vacios");
     }
 } else {
-    header("location: ../../Presentation/Admin/administracion.php?msg=problema seguridad");
+    header("location: ../../Presentation/Admin/inicio.php?errorLogIn=problema seguridad");
 }
 ?>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,10 +45,9 @@
 
         <!-- Modernizr JS -->
         <script src="../../ClientResource/js/modernizr-2.6.2.min.js"></script>
-
+        <style TYPE="text/css">*{text-align : justify;}</style>
         <script src="../../ClientResource/js/jquery.min.js"></script>
 
-        <style TYPE="text/css">*{text-align : justify;}</style>
         <?php
         include '../../Business/Empresa/EmpresaBusiness.php';
         include '../../Business/Titulos/TitulosBusiness.php';
@@ -161,6 +159,7 @@
         ?>
 
 
+
         <div id="fh5co-container">
             <div id="fh5co-home" class="js-fullheight" data-section="home">
 
@@ -170,12 +169,14 @@
                     <div class="fh5co-text">
                         <div class="container">
                             <div class="row">
-                                <h1 class="to-animate" style="text-align : center;">Lácteos</h1>
+                                  <h1 class="to-animate" style="text-align : center;">Lácteos</h1>
                                 <h2 class="to-animate" style="text-align : center;">Las Abras</h2><br>
+
                             </div>
                         </div>
                     </div>
                     <ul class="slides">
+
 
                         <?php
                         $instBusiness = new InicioBusiness();
@@ -216,7 +217,7 @@
                             <a data-toggle="modal" href="#myModalLanguaje">     
                                 <?php echo $btnIdiomas; ?>
                             </a>                         
-                            <a data-toggle="modal" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión"></a>
+                            <a data-toggle="modal" id="session" href="#modalSesion" class="glyphicon glyphicon-log-in" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión"></a>
 
                         </div>
                     </div>
@@ -232,7 +233,7 @@
 
                     for ($i = 0; $i < count($parrafos); $i++) {
                         if ($i == 0) {
-                            echo '<p class="to-animate"><span class="firstcharacter">' .
+                            echo ' <p class="to-animate"><span class="firstcharacter">' .
                             substr($parrafos[$i], 0, 1) . '</span>' .
                             substr($parrafos[$i], 1) . '</p>';
                         } else {
@@ -376,7 +377,7 @@
                                         ?>  
 
                                         <li class="col-sm-2">
-                                            <!--<a class="thumbnail" <?php echo "id='carousel-selector-" . $conta . "'"; ?>><img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>"></a>-->
+                                            <a class="thumbnail" <?php echo "id='carousel-selector-" . $conta . "'"; ?>><img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>"></a>
                                         </li>
 
                                         <?php
@@ -450,9 +451,9 @@
                         </div>
                         <div class="col-md-6 to-animate-2">
                             <h3><?php echo $consulta; ?></h3>
-                            <form action="home.php">
+                            <form method="post" action="../../smtp.php">
                                 <div class="form-group ">
-                                    <input id="name" class="form-control" placeholder="<?php
+                                    <input id="name" name="name" class="form-control" placeholder="<?php
                                     if ($idiomaTemp == true) {
                                         echo 'Nombre';
                                     } else {
@@ -461,7 +462,7 @@
                                     ?> "type="text" required>
                                 </div>
                                 <div class="form-group ">
-                                    <input id="email" class="form-control" placeholder="<?php
+                                    <input id="email" name="email" class="form-control" placeholder="<?php
                                     if ($idiomaTemp == true) {
                                         echo 'Correo';
                                     } else {
@@ -471,7 +472,7 @@
                                 </div>
 
                                 <div class="form-group ">
-                                    <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="<?php
+                                    <textarea name=" comments" id="comments"  cols="30" rows="5" class="form-control" placeholder="<?php
                                     if ($idiomaTemp == true) {
                                         echo 'Mensaje';
                                     } else {
@@ -580,8 +581,8 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="modalSesion">Iniciar Sesión</h4>
                     </div>
-                    <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" target="_blank">
-                        <div class="modal-body">
+                    <div class="modal-body">
+                        <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" >
                             <div class="form-group">
                                 <!--<label for="inputEmail3" class="col-sm-2 control-label">Correo</label>-->
                                 <div class="col-sm-12">
@@ -591,7 +592,7 @@
                             <div class="form-group">
                                 <!--<label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>-->
                                 <div class="col-sm-12">
-                                    <input name="password" type="passwordb" class="form-control" id="inputPassword3" placeholder="Contraseña" required>
+                                    <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="Contraseña" required>
                                 </div>
                             </div>
                             <!--                            <div class="form-group">
@@ -607,9 +608,9 @@
                                 <div class="col-sm-offset-4 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Ingresar</button>
                                 </div>
-                            </div></div>
-                    </form>
-
+                            </div>
+                        </form>
+                    </div>
                     <!--                    <div class="modal-footer">
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                                         </div>-->
@@ -679,6 +680,22 @@
         </script>
         <!-- Main JS -->
         <script src="../../ClientResource/js/main.js"></script>
+
+        <script>
+            window.onload = function ()
+            {
+                // capturamos la url
+                var loc = document.location.href;
+                // si existe el interrogante
+                if (loc.indexOf('?') > 0 && loc.indexOf('errorLogIn') > 0)
+                {
+                    var objO = document.getElementById("session");
+                    objO.click();
+                    history.pushState(null, "", loc.split("?")[0]);
+                }
+            }
+        </script>       
+
     </body>
 </html>
 
