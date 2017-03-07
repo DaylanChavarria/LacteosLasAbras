@@ -45,7 +45,7 @@
 
         <!-- Modernizr JS -->
         <script src="../../ClientResource/js/modernizr-2.6.2.min.js"></script>
-        <style TYPE="text/css">*{text-align : justify;}</style>
+
         <script src="../../ClientResource/js/jquery.min.js"></script>
 
         <?php
@@ -169,8 +169,8 @@
                     <div class="fh5co-text">
                         <div class="container">
                             <div class="row">
-                                  <h1 class="to-animate" style="text-align : center;">Lácteos</h1>
-                                <h2 class="to-animate" style="text-align : center;">Las Abras</h2><br>
+                                <h1 class="to-animate" >Lácteos</h1>
+                                <h2 class="to-animate" >Las Abras</h2><br>
 
                             </div>
                         </div>
@@ -233,11 +233,11 @@
 
                     for ($i = 0; $i < count($parrafos); $i++) {
                         if ($i == 0) {
-                            echo ' <p class="to-animate"><span class="firstcharacter">' .
+                            echo ' <p class="to-animate" style="text-align: justify;"><span class="firstcharacter">' .
                             substr($parrafos[$i], 0, 1) . '</span>' .
                             substr($parrafos[$i], 1) . '</p>';
                         } else {
-                            echo '<p class="to-animate">' . $parrafos[$i] . '</p>';
+                            echo '<p class="to-animate" style="text-align: justify;">' . $parrafos[$i] . '</p>';
                         }
                     }
                     ?>
@@ -250,7 +250,7 @@
                     $parrafos = explode("|", $tem->quinesSomos); //separa parrafos por medio de |
 
                     for ($i = 0; $i < count($parrafos); $i++) {
-                        echo '<p class="to-animate">' . $parrafos[$i] . '</p>';
+                        echo '<p class="to-animate" style="text-align: justify;">' . $parrafos[$i] . '</p>';
                     }
                     ?>
 
@@ -349,7 +349,7 @@
 
                                                 <div <?php echo "id='slide-content-" . $conta . "'"; ?> >
 
-                                                    <p><?php echo $currentGaleria->descripcion; ?></p>
+                                                    <p style="text-align: justify;"><?php echo $currentGaleria->descripcion; ?></p>
 
                                                 </div>
                                                 <?php
@@ -397,15 +397,15 @@
                     <div class="row text-center fh5co-heading row-padded">
                         <div class="col-md-12  to-animate">
                             <h2 class="heading"><?php echo $productos; ?></h2>
-                            <p class="sub-heading"><?php echo $tem->elaboracion; ?></p>
+                            <p class="sub-heading" style="text-align: justify;"><?php echo $tem->elaboracion; ?></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="fh5co-event to-animate-2">
-                                <h3><?php echo $quesos; ?></h3>
+                                <h3 ><?php echo $quesos; ?></h3>
                                 <span class="fh5co-event-meta"></span>
-                                <p><?php echo $tem->descripcionProductoA; ?></p>
+                                <p style="text-align: justify;"><?php echo $tem->descripcionProductoA; ?></p>
                                 <p><a href="productos.php?lang=<?php
                                     if ($idiomaTemp == 1) {
                                         echo "es";
@@ -419,7 +419,7 @@
                             <div class="fh5co-event to-animate-2">
                                 <h3><?php echo $denominacion; ?></h3>
                                 <span class="fh5co-event-meta"></span>
-                                <p><?php echo $tem->denominacion; ?>.</p>
+                                <p style="text-align: justify;"><?php echo $tem->denominacion; ?>.</p>
 
                             </div>
                         </div>
@@ -682,15 +682,15 @@
         <script src="../../ClientResource/js/main.js"></script>
 
         <script>
-            window.onload = function()
-            { 
+            window.onload = function ()
+            {
                 // capturamos la url
                 var loc = document.location.href;
                 // si existe el interrogante
-                if(loc.indexOf('?')>0 && loc.indexOf('errorLogIn') > 0)
+                if (loc.indexOf('?') > 0 && loc.indexOf('errorLogIn') > 0)
                 {
                     var objO = document.getElementById("session");
-                    objO.click();  
+                    objO.click();
                     history.pushState(null, "", loc.split("?")[0]);
                 }
             }
