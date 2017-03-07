@@ -582,7 +582,7 @@
                         <h4 class="modal-title" id="modalSesion">Iniciar Sesión</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" >
+                        <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php">
                             <div class="form-group">
                                 <!--<label for="inputEmail3" class="col-sm-2 control-label">Correo</label>-->
                                 <div class="col-sm-12">
@@ -682,19 +682,20 @@
         <script src="../../ClientResource/js/main.js"></script>
 
         <script>
-            window.onload = function ()
-            {
+            window.onload = function()
+            { 
                 // capturamos la url
                 var loc = document.location.href;
                 // si existe el interrogante
-                if (loc.indexOf('?') > 0 && loc.indexOf('errorLogIn') > 0)
+                if(loc.indexOf('?')>0 && loc.indexOf('errorLogIn') > 0)
                 {
                     var objO = document.getElementById("session");
-                    objO.click();
+                    objO.click();  
                     history.pushState(null, "", loc.split("?")[0]);
                 }
             }
-        </script>       
+        </script>
+
 
     </body>
 </html>
