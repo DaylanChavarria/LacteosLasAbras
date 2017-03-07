@@ -49,6 +49,7 @@
 
         <script src="../../ClientResource/js/jquery.min.js"></script>
 
+        <style TYPE="text/css">*{text-align : justify;}</style>
         <?php
         include '../../Business/Empresa/EmpresaBusiness.php';
         include '../../Business/Titulos/TitulosBusiness.php';
@@ -160,7 +161,6 @@
         ?>
 
 
-
         <div id="fh5co-container">
             <div id="fh5co-home" class="js-fullheight" data-section="home">
 
@@ -170,14 +170,12 @@
                     <div class="fh5co-text">
                         <div class="container">
                             <div class="row">
-                                <h1 class="to-animate">Lácteos</h1>
-                                <h2 class="to-animate">Las Abras</h2><br>
-
+                                <h1 class="to-animate" style="text-align : center;">Lácteos</h1>
+                                <h2 class="to-animate" style="text-align : center;">Las Abras</h2><br>
                             </div>
                         </div>
                     </div>
                     <ul class="slides">
-
 
                         <?php
                         $instBusiness = new InicioBusiness();
@@ -234,7 +232,7 @@
 
                     for ($i = 0; $i < count($parrafos); $i++) {
                         if ($i == 0) {
-                            echo ' <p class="to-animate"><span class="firstcharacter">' .
+                            echo '<p class="to-animate"><span class="firstcharacter">' .
                             substr($parrafos[$i], 0, 1) . '</span>' .
                             substr($parrafos[$i], 1) . '</p>';
                         } else {
@@ -378,7 +376,7 @@
                                         ?>  
 
                                         <li class="col-sm-2">
-                                            <a class="thumbnail" <?php echo "id='carousel-selector-" . $conta . "'"; ?>><img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>"></a>
+                                            <!--<a class="thumbnail" <?php echo "id='carousel-selector-" . $conta . "'"; ?>><img src="../Admin/img/galeria/<?php echo $currentGaleria->nombre ?>"></a>-->
                                         </li>
 
                                         <?php
@@ -442,7 +440,7 @@
                             <ul class="fh5co-contact-info">
                                 <li class="fh5co-contact-address ">
                                     <i class="icon-home"></i>
-<?php echo $tem->direccion; ?>
+                                    <?php echo $tem->direccion; ?>
                                 </li>
                                 <li><i class="icon-user"></i> <?php echo $tem->encargadoA; ?> <br> <?php echo $tem->encargadoB; ?></li>
                                 <li><i class="icon-phone"></i> (+506) <?php echo $tem->telefonoA; ?> <br> (+506) <?php echo $tem->telefonoB; ?></li>
@@ -535,7 +533,7 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-<?php echo $tem->mision; ?>
+                        <?php echo $tem->mision; ?>
                     </div>
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">
@@ -549,7 +547,7 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-<?php echo $tem->vision; ?>
+                        <?php echo $tem->vision; ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -582,8 +580,8 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="modalSesion">Iniciar Sesión</h4>
                     </div>
-                    <div class="modal-body">
-                        <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" target="_blank">
+                    <form method="POST" class="form-horizontal" action="../../Business/Ingreso/LoginBusinessAction.php" target="_blank">
+                        <div class="modal-body">
                             <div class="form-group">
                                 <!--<label for="inputEmail3" class="col-sm-2 control-label">Correo</label>-->
                                 <div class="col-sm-12">
@@ -609,9 +607,9 @@
                                 <div class="col-sm-offset-4 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Ingresar</button>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </div></div>
+                    </form>
+
                     <!--                    <div class="modal-footer">
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                                         </div>-->

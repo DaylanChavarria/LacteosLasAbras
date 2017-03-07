@@ -56,7 +56,7 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+        <style TYPE="text/css">*{text-align : justify;}</style>
 	</head>
 	<body>
 

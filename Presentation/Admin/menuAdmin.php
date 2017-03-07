@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="./img/logo.png" class="hidden-xs"/>
+        <a class="navbar-brand" > <img alt="Charisma Logo" src="./img/logo.png" class="hidden-xs"/>
             <span>Lácteos las Abras</span></a>
 
         <!-- user dropdown starts -->
@@ -88,10 +88,12 @@
                 <li><a class="ajax-link" href="administracion.php"><i class="glyphicon glyphicon-home"></i><span>Inicio</span></a>
                 </li>
                 <li>
-                    <a class="ajax-link" href="imagenesInicio.php"><i class="glyphicon glyphicon-home"></i><span>Imágenes de Inicio</span></a>
+<!--                    <a class="ajax-link" href="imagenesInicio.php"><i class="glyphicon glyphicon-home"></i><span>Imágenes de Inicio</span></a>-->
+                    <a href="imagenesInicio.php"><i class="glyphicon glyphicon-plus"></i><span>Imágenes de Inicio</span></a>
+                
                 </li>
                 <li class="accordion">
-                    <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Imagenes de Galería</span></a>
+                    <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Imágenes de Galería</span></a>
                     <ul class="nav nav-pills nav-stacked">
                         <li><a href="imagenesGaleria.php">Ingresar Imagen</a></li>
                         <li><a href="actualizarGaleria.php">Actualizar Imagen</a></li>

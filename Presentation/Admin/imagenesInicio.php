@@ -11,21 +11,15 @@ if (isset($_SESSION['user'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <meta charset="utf-8">
         <title>Lácteos las Abras</title>  
     </head>
-
     <body>
         <!-- topbar starts -->
-
         <!-- topbar ends -->
         <div class="ch-container">
             <div class="row">
-
-
                 <?php include './menuAdmin.php'; ?>
-
                 <div id="content" class="col-lg-10 col-sm-10">
                     <!-- content starts -->
                     <div>
@@ -46,10 +40,10 @@ if (isset($_SESSION['user'])) {
                                     <h2><i class="glyphicon glyphicon-picture"></i>Imágenes de Inicio</h2>
 
                                     <div class="box-icon">
-                                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+<!--                                        <a href="#" class="btn btn-setting btn-round btn-default"><i
                                                 class="glyphicon glyphicon-cog"></i></a>
                                         <a href="#" class="btn btn-minimize btn-round btn-default"><i
-                                                class="glyphicon glyphicon-chevron-up"></i></a>
+                                                class="glyphicon glyphicon-chevron-up"></i></a>-->
                                         <a href="#" class="btn btn-close btn-round btn-default"><i
                                                 class="glyphicon glyphicon-remove"></i></a>
                                     </div>
