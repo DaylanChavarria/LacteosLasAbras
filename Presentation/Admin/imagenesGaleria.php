@@ -24,17 +24,7 @@ if (isset($_SESSION['user'])) {
             <div class="row">
                 <?php include './menuAdmin.php'; ?>
                 <div id="content" class="col-lg-10 col-sm-10">
-                    <!-- content starts -->
-                    <div>
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">Galería</a>
-                            </li>
-                            <li>
-                                <a href="#">Eliminar Fotos</a>
-                            </li>
-                        </ul>
-                    </div>
+              
 
                     <div class="row">
                         <div class="box col-md-12">

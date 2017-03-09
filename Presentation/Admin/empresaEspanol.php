@@ -29,17 +29,7 @@ if (isset($_SESSION['user'])) {
                 <?php include 'menuAdmin.php'; ?>
 
                 <div id="content" class="col-lg-10 col-sm-10">
-                    <!-- content starts -->
-                    <div>
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">Grid</a>
-                            </li>
-                        </ul>
-                    </div>
+       
 
                     <!-- Mensaje de error o de realizado -->
                     <?php

@@ -22,17 +22,7 @@ if (isset($_SESSION['user'])) {
                 <?php include 'menuAdmin.php'; ?>
 
                 <div id="content" class="col-lg-10 col-sm-10">
-                    <!-- content starts -->
-                    <div>
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">Productos</a>
-                            </li>
-                            <li>
-                                <a href="#">Ingresar</a>
-                            </li>
-                        </ul>
-                    </div>
+                 
 
                     <div class="row">
                         <!-- Mensaje de error o de realizado -->
